@@ -1,0 +1,76 @@
+%% FELthesis: LaTeX class for bachelor, master, and phd thesis in CTU FEL
+%% template.tex: template file
+%% (c) 2012 Vít Zýka, vit.zyka@seznam.cz
+%%
+%% 2012-12-17 v0.1 first version derived from cmpthesis.tex
+
+\documentclass[bcl,draft]{felthesis} % or [...,czech] for thesis in Czech
+%%\documentclass[msc,draft]{felthesis} % or [...,czech] for thesis in Czech
+%%\documentclass[phd,draft]{felthesis} % or [...,czech] for thesis in Czech
+
+%% --- your additional packages:
+\usepackage[utf8]{inputenc}
+\usepackage[backend=biber]{biblatex}
+
+%% --- usefull draft packages
+%%\usepackage[notref]{showkeys} % show labels for referencies
+%%\usepackage{showlabels}       % similar
+%%\usepackage{showidx}          % show index entries on every page
+
+%% ======================================================== thesis info
+\startThesisInfo
+  \Title{thesis title}
+  \Author{author name}
+  %\AuthorEmail{???@fel.cvut.cz} % optional
+  %\ThesisUrl{http://fel.cvut.cz/???/???-bsc.pdf} % optional
+  \Date{November 2012}
+  \Department{Katedra kybernetiky}
+  \Advisor{first advisor, second advisor}
+  \KeywordsCz{První klíčové slovo; druhé; třetí; \dots}
+  \KeywordsEn{First keyword; second; third; \dots}
+  %\AssignmentPage{assignment.pdf} % insert official assignment if given
+\stopThesisInfo
+
+%% ============================== your definitions (abbreviations etc.)
+%%\def\Ax{\mathbf{A}_{x}}
+
+%% =========================================================== settings
+\addbibresource{biblatex.bib} % bibliography file
+
+\graphicspath{{fig}{logo}} % subdirectories where TeX finds pictures
+
+%% ========================================================== text body
+\begin{document}
+
+\MakeTitle
+
+\startFrontMatter
+  \input{acknowledgement}
+  \input{declaration}
+  \input{abstract}
+  \TableOfContents
+  \input{abbreviations}
+\stopFrontMatter
+
+\startBodyMatter
+  %\includeonly{ch01}
+  \include{ch01}
+  Lorem ipsum dolor sit amet \cite{kastenholz}.
+  %\include{ch02}
+  %...
+
+  %\startAppendices
+  %  \include{app01}
+  %\stopAppendices
+\stopBodyMatter
+
+\startBackMatter
+  \PrintBibliography
+  %\PrintIndex % define index entry in the text by: \index{word}
+\stopBackMatter
+
+\end{document}
+
+\endinput
+%%
+%% End of file `template.tex'.
