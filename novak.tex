@@ -12,6 +12,7 @@
 \usepackage[utf8]{inputenc}
 \usepackage[backend=biber]{biblatex}
 
+
 %% --- usefull draft packages
 %%\usepackage[notref]{showkeys} % show labels for referencies
 %%\usepackage{showlabels}       % similar
@@ -19,15 +20,15 @@
 
 %% ======================================================== thesis info
 \startThesisInfo
-  \Title{thesis title}
-  \Author{author name}
+  \Title{Accessible UIP client for Windows Phone 8}
+  \Author{Vojtech Novak}
   %\AuthorEmail{???@fel.cvut.cz} % optional
   %\ThesisUrl{http://fel.cvut.cz/???/???-bsc.pdf} % optional
-  \Date{November 2012}
-  \Department{Katedra kybernetiky}
-  \Advisor{first advisor, second advisor}
-  \KeywordsCz{První klíčové slovo; druhé; třetí; \dots}
-  \KeywordsEn{First keyword; second; third; \dots}
+  \Date{\today}
+  \Department{\\Dept. of Computer Graphics and Interaction}
+  \Advisor{Macik Miroslav Ing.}
+  \KeywordsCz{Navigace, Generování UI, Přístupnost, Windows Phone 8, UIP}
+  \KeywordsEn{Navigation, UI Generation, Accessibility, Windows Phone 8, UIP}
   %\AssignmentPage{assignment.pdf} % insert official assignment if given
 \stopThesisInfo
 
@@ -37,7 +38,7 @@
 %% =========================================================== settings
 \addbibresource{biblatex.bib} % bibliography file
 
-\graphicspath{{fig}{logo}} % subdirectories where TeX finds pictures
+\graphicspath{{logo}{fig}} % subdirectories where TeX finds pictures
 
 %% ========================================================== text body
 \begin{document}
@@ -54,8 +55,12 @@
 
 \startBodyMatter
   %\includeonly{ch01}
+  \include{intro01}
   \include{ch01}
-  Lorem ipsum dolor sit amet \cite{kastenholz}.
+  \include{ch02}
+  \include{ch03}
+  \include{navigationSystems}
+  %Lorem ipsum dolor sit amet \cite{kastenholz}.
   %\include{ch02}
   %...
 

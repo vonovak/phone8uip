@@ -1941,7 +1941,16 @@
     <bcf:datasource type="file" datatype="bibtex">biblatex.bib</bcf:datasource>
   </bcf:bibdata>
   <bcf:section number="0">
-    <bcf:citekey order="1">kastenholz</bcf:citekey>
+    <bcf:citekey order="1">naviterier</bcf:citekey>
+    <bcf:citekey order="2">balata</bcf:citekey>
+    <bcf:citekey order="3">luis</bcf:citekey>
+    <bcf:citekey order="4">riehle</bcf:citekey>
+    <bcf:citekey order="5">percept</bcf:citekey>
+    <bcf:citekey order="6">lopez</bcf:citekey>
+    <bcf:citekey order="7">espinace</bcf:citekey>
+    <bcf:citekey order="8">quattoni</bcf:citekey>
+    <bcf:citekey order="9">bosch</bcf:citekey>
+    <bcf:citekey order="10">hesch</bcf:citekey>
   </bcf:section>
   <bcf:sortlist section="0" type="entry" label="none">
   <bcf:sorting>
