@@ -1,0 +1,34 @@
+\chapter{UIProtocol}
+This chapter introduces the reader to the UIProtocol, its architecture and discusses the UIProtocol client design.
+%Analyse UIP platform, focus on UIP client design.
+
+\section{About UIProtocol}
+Universal Interface Protocol (UIProtocol) is a user interface specification language \cite{uip} being developed at FEE CTU (currently 8th version of the specification draft) for research purposes. At the time of writing this thesis, the specification is not publicly available. UIProtocol provides means for describing user interfaces and transferring data related to interaction between user and an UIProtocol based application. It is designed to be cross-platform, programming language independent and easily localized.\\
+UIProtocol is an XML based application protocol that allows for describing the hierarchical structure of the GUI along with the placement and visual appearance of the containers and components. It is designed for a client-server system and for facilitating client-server applications it defines the communication rules between client and server. The communication  is based on exchange of XML documents which contain all components and values needed for rendering the UI. The client first initiates the communication and receives respective XML description from the server. The description can be of four different types: interfaces, i.e. the UI components and containers, models which contain the data displayed and actions. The communication from client to server only consists of event descriptions. For example, whena user presses a button, the event information is sent to the server which responds by model and/or interface update.
+
+The documents of UIProtocol can be sent in either direction usually through a single channel without waiting for a request, e.g. server can send updates to the client as soon as the displayed information needs to be updated, without having to wait for an update request. Should an application not communicate with a remote server, there is the possibility of both client and server running on the same machine although this is not a typical usage.
+
+\subsection{UIProtocol Client}
+UIProtocol client is thin, i.e. no application code is executed on the client side. The device running the client is thought to be the the one user directly uses, that is, it renders the content to the user and receives input from them. From the UIProtocol point of view, the client device is also considered insecure, i.e. the device may be misused to send invalid data to the server and may be used to attack it.
+
+\subsection{UIProtocol Server}
+UIProtocol is the part of the architecture which is responsible for evaluating the client events and sending a correct response - this is where the application logic is executed. It must be able to service multiple client simultaneously and is intended to run on a machine which is considered safe.
+
+
+\subsection{Elements of UIProtocol Communication}
+As mentioned previously, the information exchange between client and server concerns Interfaces, Models, Actions (which are sent from server to client) and events (sent from client to server). In the following subsections we will describe these in a greater detail.
+
+\subsubsection{Interfaces}
+Interface describes the structure and components of the user interface. Every interface can nest containers and elements that form a part of user interface.\\
+
+\begin{lstlisting}[label=some-code,caption=Some Code]
+public void here() {
+	goes().the().code()
+}
+\end{lstlisting}
+
+\newpage
+\subsection{UIProtocol Client Design}
+The UIP client may not implement the whole feature set defined by UIProtocol. What has to be implemented is the minimal functionality that is able to render a user interface, sending event information to the server and update the application it by data coming from it.
+The UIP client will be developed for the Windows Phone 8 operating system and written in \texttt{C\#}. The application will be developed using Visual Studio 2013. 
+\endinput

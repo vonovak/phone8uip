@@ -1,0 +1,11 @@
+<interfaces>
+  <interface class="ui.Interface1">
+    <!-- interface description -->
+  </interface>
+  <interface class="ui.Identifier2">
+    <container class="public.container.panel">
+      <element class="ui.Interface1"/>
+      <element class="ui.Interface1"/>
+    </container>
+  </interface>
+</interfaces>

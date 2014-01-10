@@ -1941,16 +1941,21 @@
     <bcf:datasource type="file" datatype="bibtex">biblatex.bib</bcf:datasource>
   </bcf:bibdata>
   <bcf:section number="0">
-    <bcf:citekey order="1">naviterier</bcf:citekey>
-    <bcf:citekey order="2">balata</bcf:citekey>
-    <bcf:citekey order="3">luis</bcf:citekey>
-    <bcf:citekey order="4">riehle</bcf:citekey>
-    <bcf:citekey order="5">percept</bcf:citekey>
-    <bcf:citekey order="6">lopez</bcf:citekey>
-    <bcf:citekey order="7">espinace</bcf:citekey>
-    <bcf:citekey order="8">quattoni</bcf:citekey>
-    <bcf:citekey order="9">bosch</bcf:citekey>
-    <bcf:citekey order="10">hesch</bcf:citekey>
+    <bcf:citekey order="1">uip</bcf:citekey>
+    <bcf:citekey order="2">phone8speech</bcf:citekey>
+    <bcf:citekey order="3">mozillaguy</bcf:citekey>
+    <bcf:citekey order="4">mozillaguy</bcf:citekey>
+    <bcf:citekey order="5">naviterier</bcf:citekey>
+    <bcf:citekey order="6">balata</bcf:citekey>
+    <bcf:citekey order="7">luis</bcf:citekey>
+    <bcf:citekey order="8">riehle</bcf:citekey>
+    <bcf:citekey order="9">sylvie</bcf:citekey>
+    <bcf:citekey order="10">percept</bcf:citekey>
+    <bcf:citekey order="11">lopez</bcf:citekey>
+    <bcf:citekey order="12">espinace</bcf:citekey>
+    <bcf:citekey order="13">quattoni</bcf:citekey>
+    <bcf:citekey order="14">bosch</bcf:citekey>
+    <bcf:citekey order="15">hesch</bcf:citekey>
   </bcf:section>
   <bcf:sortlist section="0" type="entry" label="none">
   <bcf:sorting>

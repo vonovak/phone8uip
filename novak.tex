@@ -9,8 +9,22 @@
 %%\documentclass[phd,draft]{felthesis} % or [...,czech] for thesis in Czech
 
 %% --- your additional packages:
-\usepackage[utf8]{inputenc}
+%\usepackage[utf8]{inputenc}
 \usepackage[backend=biber]{biblatex}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{graphicx}
+
+%% for code listings
+\usepackage{color}
+\usepackage{xcolor}
+\usepackage{listings}
+
+\usepackage{caption}
+\DeclareCaptionFont{white}{\color{white}}
+\DeclareCaptionFormat{listing}{\colorbox{gray}{\parbox{\textwidth}{#1#2#3}}}
+\captionsetup[lstlisting]{format=listing,labelfont=white,textfont=white}
+%% end of for code listings
 
 
 %% --- usefull draft packages
@@ -55,11 +69,12 @@
 
 \startBodyMatter
   %\includeonly{ch01}
-  \include{intro01}
-  \include{ch01}
-  \include{ch02}
-  \include{ch03}
+  \include{uipAnalisys}
+  \include{w8Acessibility}
+  \include{androidAccessibility}
+  \include{iphoneAcessibility}
   \include{navigationSystems}
+  \include{appendix}
   %Lorem ipsum dolor sit amet \cite{kastenholz}.
   %\include{ch02}
   %...
@@ -78,4 +93,4 @@
 
 \endinput
 %%
-%% End of file `template.tex'.
+%% End of file

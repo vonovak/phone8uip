@@ -1,0 +1,34 @@
+\chapter{Accessibility of Current Mobile Platforms}
+In this chapter we will analyze the accessibility features of today's most common mobile platforms. Since this thesis is about development of a UIP client for Windows Phone 8, we will put emphasis on this OS.
+\section{Windows Phone 8 Accessibility}
+This section covers all of the features for ease of access that are included in the Windows Phone 8 operating system. For the purposes of this project, we are particularly interested in features that may help the visually impaired users. From this point of view, perhaps the most important are the voice commands and speech recognition features which Windows phone 8 has built-in and which support a wide range of languages.
+
+\subsection{Windows Phone 8 Speech Features}
+Users can interact with the phone using speech. There are three speech components that a developer can integrate in her app and the user can take advantage of them: voice commands, speech recognition, and text-to-speech (TTS). We will explore these features in the following paragraphs.
+At the time of writing, the speech features support 15 major languages ranging from English to Russian or even English with the Indian accent. Czech, however, is not supported. To use the speech features the user has to download a language pack.
+
+\subsubsection{Speech Recognition}
+Users can give input to an app or accomplish tasks with it using speech recognition. An example usage can be dictating content of an SMS. This is very similar to the Voice Command feature, but the key difference is that speech recognition occurs when user is in the app, and Voice Commands occur from outside of the app \cite{phone8speech}. The second key difference is that the Voice Commands are defined on a finite and usually small set of words (commands), whereas the Speech Recognition should recognize words from a much larger dictionary – in ideal case a whole human language.
+
+\subsubsection{Voice Commands}
+When a user installs an app, they can automatically use voice to access it by speaking "open" or "start", followed by the app name. The range of actions that can be triggered by Voice Commands is much wider, the full list of available speech commands that are provided by the operating system is listed in table **.
+A developer can also define her own set of voice commands and allow users not only to open the app using voice but also to carry out more advanced tasks within the app. This is very important for our work since it allows for exposing a wider range of commands to the visually impaired user. Note that technically, this still happens from the outside of the app, as described in the previous section.
+
+\subsubsection{Text to Speech (TTS)}
+TTS can be used to speak text to the user via the phone's speaker or headset.The spoken text can be simple strings or strings formatted according to the industry-standard Speech Synthesis Markup Language (SSML) Version 1.0. TTS is also used in some of the other features for ease of access which are covered in the next section.
+
+\subsubsection{Other Speech Features}
+A feature named Speech for phone accessibility enables the following:
+1)	Talking caller ID
+When getting a call or receiving a text, the phone can announce the name of the caller or the number. 
+2)	Speech-controlled speed dial
+User can assign a number to a person from the contact list and then say Say "Call speed dial number" (where number is the assigned number) to call the person. Assigning the speed dial number is also speech-enabled.
+3)	Read aloud incoming text messages
+Similarly to 1, the phone can read the content of a text.
+
+\subsection{Other Tools for Ease of Access}
+Windows phone 8 comes with more features for ease of access which can help lightly visually impaired users. User can change font size in apps (not in the tiles of the home screen), switch the display theme to high-contrast colors and use the screen magnifier. Mobile Accessibility is a set of accessible apps with a screen reader, which helps use the phone by reading the application content aloud. The applications include phone, text, email, and web browsing. When Mobile Accessibility is turned on, notifications like alarms, calendar events, and low battery warnings will be read aloud. 
+
+\endinput
+%%
+%% End of file `ch01.tex'.
