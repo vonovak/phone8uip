@@ -1,0 +1,6 @@
+<events>
+  <event id="login">
+    <property name="username" value="user"/>
+    <property name="password" value="pass"/>
+  </event>
+</events>

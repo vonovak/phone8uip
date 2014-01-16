@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<UIProtocol version="1.0">
+  <interfaces>
+    <!-- interface deinitions -->
+  </interfaces>
+  <models>
+    <!-- model definitions -->
+  </models>
+  <events>
+    <!-- event definitions -->
+  </events>
+  <actions>
+    <!-- action definitions - optional -->
+  </actions>
+</UIProtocol>

@@ -2,9 +2,11 @@
   <interface class="ui.Interface1">
     <!-- interface description -->
   </interface>
-  <interface class="ui.Identifier2">
+  <interface class="ui.Interface2">
     <container class="public.container.panel">
-      <element class="ui.Interface1"/>
+      <element class="public.input.text" id="nameTextBox">
+        <property name="text" value="Enter first name" key="gui:fstName"/>
+      </element>
       <element class="ui.Interface1"/>
     </container>
   </interface>
