@@ -1,0 +1,24 @@
+\chapter{Architecture}
+This chapter will go through the design of the application architecture of the UIP client for the selected platform - Windows Phone 8.
+
+\subsection{About Windows Phone 8}
+The Windows Phone 8 is the first of Microsoft's mobile platform to use the Windows NT Kernel, which is the same kernel as the one in Windows 8. Therefore some parts of the API are the same for both systems. A significant subset of Windows Runtime is built natively into Windows Phone 8, with the functionality exposed to all supported languages. This gives a developer the ability to use the same API for common tasks such as networking, working with sensors, processing location data, and implementing in-app purchase. Therefore there is more potential for code reuse.\\
+Also, Windows Phone 8 and windows 8 share the same .NET engine. This is to deliver more stability and performance to your apps, so they can take advantage of multicore processing and improve battery life. Most new devices are now multicore, and the operating system and apps are expected to be faster because of this technology. The development for this is done in Visual Studio 2013 and we chose the language of development to be C\#.
+
+\subsection{Requirements}
+The application should perform well in terms of performance. There will be a delay present in the application's reaction time, which is a consequence of the client-server architecture ie. the need of internet connection. The delay should be reasonably small to allow for a comfortable usage of the application.
+\\
+The application should run on any device powered by the Windows Phone 8 OS.
+\newline
+\\
+Non-functional requirements:
+\begin{itemize}
+  \item UI components have platform native look
+  \item App will be will be written in C\#
+  \item The client should not use much phone resources when idle
+  \item App should be stable and able to process valid UIP documents
+  \item Compatibility with UIP standard, draft 8
+  \item UI loading times below TODO s
+\end{itemize}
+
+\subsection{Design}
