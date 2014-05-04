@@ -1941,23 +1941,28 @@
     <bcf:datasource type="file" datatype="bibtex">biblatex.bib</bcf:datasource>
   </bcf:bibdata>
   <bcf:section number="0">
-    <bcf:citekey order="1">uip</bcf:citekey>
-    <bcf:citekey order="2">phone8speech</bcf:citekey>
-    <bcf:citekey order="3">phone8market</bcf:citekey>
-    <bcf:citekey order="4">mozillaguy</bcf:citekey>
-    <bcf:citekey order="5">mozillaguy</bcf:citekey>
-    <bcf:citekey order="6">naviterier</bcf:citekey>
-    <bcf:citekey order="7">balata</bcf:citekey>
-    <bcf:citekey order="8">luis</bcf:citekey>
-    <bcf:citekey order="9">riehle</bcf:citekey>
-    <bcf:citekey order="10">sylvie</bcf:citekey>
-    <bcf:citekey order="11">percept</bcf:citekey>
-    <bcf:citekey order="12">lopez</bcf:citekey>
-    <bcf:citekey order="13">espinace</bcf:citekey>
-    <bcf:citekey order="14">quattoni</bcf:citekey>
-    <bcf:citekey order="15">bosch</bcf:citekey>
-    <bcf:citekey order="16">hesch</bcf:citekey>
-    <bcf:citekey order="17">indoorNFC</bcf:citekey>
+    <bcf:citekey order="1">wp8kernel</bcf:citekey>
+    <bcf:citekey order="2">wp8comparison</bcf:citekey>
+    <bcf:citekey order="3">wp8comparison</bcf:citekey>
+    <bcf:citekey order="4">cs1.0specs</bcf:citekey>
+    <bcf:citekey order="5">cs1.0specs</bcf:citekey>
+    <bcf:citekey order="6">uip</bcf:citekey>
+    <bcf:citekey order="7">phone8speech</bcf:citekey>
+    <bcf:citekey order="8">phone8market</bcf:citekey>
+    <bcf:citekey order="9">mozillaguy</bcf:citekey>
+    <bcf:citekey order="10">mozillaguy</bcf:citekey>
+    <bcf:citekey order="11">naviterier</bcf:citekey>
+    <bcf:citekey order="12">balata</bcf:citekey>
+    <bcf:citekey order="13">luis</bcf:citekey>
+    <bcf:citekey order="14">riehle</bcf:citekey>
+    <bcf:citekey order="15">sylvie</bcf:citekey>
+    <bcf:citekey order="16">percept</bcf:citekey>
+    <bcf:citekey order="17">lopez</bcf:citekey>
+    <bcf:citekey order="18">espinace</bcf:citekey>
+    <bcf:citekey order="19">quattoni</bcf:citekey>
+    <bcf:citekey order="20">bosch</bcf:citekey>
+    <bcf:citekey order="21">hesch</bcf:citekey>
+    <bcf:citekey order="22">indoorNFC</bcf:citekey>
   </bcf:section>
   <bcf:sortlist section="0" type="entry" label="none">
   <bcf:sorting>

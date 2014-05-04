@@ -14,6 +14,7 @@
 \usepackage{booktabs}
 \usepackage{multirow}
 \usepackage{graphicx}
+\usepackage{color, colortbl}
 
 %tabularx for table width equal to textwidth
 \usepackage{tabularx}
@@ -47,6 +48,9 @@
          %backgroundcolor=\color{lightgray},
          showstringspaces=false      % Leerzeichen in Strings anzeigen ?        
  }
+ 
+\definecolor{mygray}{cmyk}{0.43, 0.35, 0.35,0.01} 
+ 
  \lstloadlanguages{% Check Dokumentation for further languages ...
          %[Visual]Basic
          %Pascal
@@ -107,7 +111,7 @@
 \stopFrontMatter
 
 \startBodyMatter
-  %\includeonly{ch01}
+  \include{overallAnalysis}
   \include{uipAnalisys}
   \include{w8Acessibility}
   \include{androidAccessibility}
@@ -117,7 +121,6 @@
   \include{appendix}
   %Lorem ipsum dolor sit amet \cite{kastenholz}.
   %\include{ch02}
-  %...
 
   %\startAppendices
   %  \include{app01}
