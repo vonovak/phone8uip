@@ -7,9 +7,8 @@
     \rowcolor{mygray}
     \textbf{Element type} & \textbf{Description} \\
     Static text & For TextBlock and RichTextBlock elements, an accessible name is automatically determined from the visible (inner) text. All of the text in that element is used as the name. See Name from inner text. \\ \hline
-    Images & The XAML Image element does not have a direct analog to the HTML alt attribute of img and similar elements. Either use AutomationProperties.Name to provide a name, or use the captioning technique. SeeAccessible names for images. \\ \hline
-    Form elements & The accessible name for a form element should be the same as the label that is displayed for that element. See Labels and LabeledBy. \\ \hline
-    Buttons and links & By default, the accessible name of a button or link is based on the visible text, using the same rules as described in Name from inner text. In cases where a button contains only an image, useAutomationProperties.Name to provide a text-only equivalent of the button's intended action. \\
+    Images & The XAML Image element does not have a direct analog to the HTML alt attribute of img and similar elements. To provide a name, AutomationProperties.Name can be used. \\ \hline
+    Form elements & The accessible name for a form element should be the same as the label that is displayed for that element.\\ \hline
+    Buttons and links & By default, the accessible name of a button or link is based on the visible text, using the same rules as described in the first row of the table. In cases where a button contains only an image, AutomationProperties.Name can be used to provide a text-only equivalent of the button's intended action. \\
     \end{tabularx}%
-  \label{tab:accessibleNameWP82}%
 \end{table}%

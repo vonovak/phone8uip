@@ -69,8 +69,7 @@
 \captionsetup[lstlisting]{format=listing,labelfont=white,textfont=white, singlelinecheck=false, margin=0pt, font={bf,footnotesize}}
 %% end of for code listings
 
-
-%% --- usefull draft packages
+%% --- useful draft packages
 %%\usepackage[notref]{showkeys} % show labels for referencies
 %%\usepackage{showlabels}       % similar
 %%\usepackage{showidx}          % show index entries on every page
@@ -79,13 +78,13 @@
 \startThesisInfo
   \Title{Accessible UIP client for Windows Phone 8}
   \Author{Vojtech Novak}
-  %\AuthorEmail{???@fel.cvut.cz} % optional
+  \AuthorEmail{vonovak@gmail.com} % optional
   %\ThesisUrl{http://fel.cvut.cz/???/???-bsc.pdf} % optional
   \Date{\today}
   \Department{\\Dept. of Computer Graphics and Interaction}
   \Advisor{Macik Miroslav Ing.}
-  \KeywordsCz{Navigace, Generování UI, Přístupnost, Windows Phone 8, UIProtocol}
-  \KeywordsEn{Navigation, UI Generation, Accessibility, Windows Phone 8, UIProtocol}
+  \KeywordsCz{Navigace, Generování UI, Přístupnost, Windows Phone 8, UIProtocol, C\#}
+  \KeywordsEn{Navigation, UI Generation, Accessibility, Windows Phone 8, UIProtocol, C\#}
   %\AssignmentPage{assignment.pdf} % insert official assignment if given
 \stopThesisInfo
 
@@ -111,20 +110,22 @@
 \stopFrontMatter
 
 \startBodyMatter
+  \include{introduction}
   \include{overallAnalysis}
-  \include{uipAnalisys}
-  \include{w8Acessibility}
-  \include{androidAccessibility}
-  \include{iphoneAcessibility}
-  \include{navigationSystems}
-  \include{architecture}
-  \include{appendix}
-  %Lorem ipsum dolor sit amet \cite{kastenholz}.
-  %\include{ch02}
-
-  %\startAppendices
-  %  \include{app01}
-  %\stopAppendices
+  \input{uipAnalisys}
+  \input{w8Acessibility}
+  \input{androidAccessibility}
+  \input{iphoneAcessibility}
+  \input{navigationSystems}
+  \input{accessibilityGuidelines}
+  \include{design}
+  \include{implementation}
+  \include{testing}
+  \include{conclusions}
+  
+  \startAppendices
+    \include{speechCommandTables}
+  \stopAppendices
 \stopBodyMatter
 
 \startBackMatter

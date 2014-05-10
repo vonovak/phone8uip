@@ -9,29 +9,27 @@ Users can interact with the phone using speech. There are three speech component
 At the time of writing, the speech features support 15 major languages ranging from English to Russian or even English with the Indian accent. Czech, however, is not supported. To use the speech features the user has to download a language pack.
 
 \paragraph{Speech Recognition}
-Users can give input to an app or accomplish tasks with it using speech recognition. An example usage can be dictating content of an SMS. This is very similar to the Voice Command feature, but the key difference is that speech recognition occurs when user is in the app, and Voice Commands occur from outside of the app \cite{phone8speech}. The second key difference is that the Voice Commands are defined on a finite and usually small set of words (commands), whereas the Speech Recognition should recognize words from a much larger dictionary – in ideal case a whole human language.
+Users can give input to an app or accomplish tasks with it using speech recognition. An example usage can be dictating content of an SMS \cite{phone8speech}. This is very similar to the Voice Command feature, but the key difference is that speech recognition occurs when user is in the app, and Voice Commands occur from outside of the app \cite{phone8speech}. The second key difference is that the Voice Commands are defined on a finite and usually small set of words (commands), whereas the Speech Recognition should recognize words from a much larger dictionary – in ideal case a whole human language.
 
 \paragraph{Voice Commands}
-When a user installs an app, they can automatically use voice to access it by speaking "open" or "start", followed by the app name. The range of actions that can be triggered by Voice Commands is much wider, the full list of available speech commands that are provided by the operating system is listed in table \ref{tab:w8sc}.
-A developer can also define her own set of voice commands and allow users not only to open the app using voice but also to carry out more advanced tasks within the app. This is very important for our work since it allows for exposing a wider range of commands to the visually impaired user. Note that technically, this still happens from the outside of the app, as described in the previous section.
+When a user installs an app, they can automatically use voice to access it by speaking "open" or "start", followed by the app name \cite{wp8voice}. The range of actions that can be triggered by Voice Commands is much wider, the full list of available speech commands that are provided by the operating system is listed in table \ref{tab:w8sc}.\\
+A developer can also define her own set of voice commands and allow users not only to open the app using voice but also to carry out more advanced tasks within the app \cite{wp8voice}. This is important for our work since it allows for exposing a wider range of commands to potential visually impaired users. Note that technically, this still happens from the outside of the app, as described in the previous section.
 
 \paragraph{Text to Speech (TTS)}
-TTS can be used to speak text to the user via the phone's speaker or headset.The spoken text can be simple strings or strings formatted according to the industry-standard Speech Synthesis Markup Language (SSML) Version 1.0. TTS is also used in some of the other features for ease of access which are covered in the next section.
+TTS can be used to speak text to the user via the phone's speaker or headset.The spoken text can be simple strings or strings formatted according to the industry-standard Speech Synthesis Markup Language (SSML) Version 1.0 \cite{phone8speech}. TTS is also used in some of the other features for ease of access which are covered in the next section.
 
 \paragraph{Other Speech Features}
-A feature named Speech for phone accessibility allows the following:
-1)	Talking caller ID
-When getting a call or receiving a text, the phone can announce the name of the caller or the number. 
-2)	Speech-controlled speed dial
+A feature named Speech for phone accessibility allows the following \cite{wp8voice}:
+\begin{enumerate}
+\item Talking caller ID\\
+When getting a call or receiving a text, the phone can announce the name of the caller or the number.
+\item Speech-controlled speed dial\\
 User can assign a number to a person from the contact list and then say Say "Call speed dial number" (where number is the assigned number) to call the person. Assigning the speed dial number is also speech-enabled.
-3)	Read aloud incoming text messages
-Similarly to 1, the phone can read the content of a text.
+\item Read aloud incoming text messages
+\end{enumerate}
 
 \subsubsection{Other Tools for Ease of Access}
-Windows phone 8 comes with more features for ease of access which can help lightly visually impaired users. User can change font size in apps (not in the tiles of the home screen), switch the display theme to high-contrast colors and use the screen magnifier. Mobile Accessibility is a set of accessible apps with a screen reader, which helps use the phone by reading the application content aloud. The applications include phone, text, email, and web browsing. When Mobile Accessibility is turned on, notifications like alarms, calendar events, and low battery warnings will be read aloud. This feature, however, is only available in version 8.0.10501.127 or later. For an unknown reason, an update to this version is not available for our phone.
+Windows phone 8 comes with more features for ease of access which can help lightly visually impaired users. User can change font size in selected build-in apps (The API for determining if the font size was changed by user is available only from WP 8.1 and the app developer can decide whether she will respect the user font size settings. \cite{wp8accText}), switch the display theme to high-contrast colors and use the screen magnifier \cite{wp8screenreader}. Mobile Accessibility is a set of accessible apps with a screen reader, which helps use the phone by reading the application content aloud. These applications include phone, text, email, and web browsing \cite{wp8screenreader}. When Mobile Accessibility is turned on, notifications like alarms, calendar events, and low battery warnings will be read aloud. This feature, however, is only available in version 8.0.10501.127 \cite{wp8screenreader} or later. For an unknown reason, an update to this version is not available for our phone.
 
 \subsubsection{Conclusions}
-Windows Phone platform offers some features to make its accessibility to disabled users easier. However, there are still gaps to be filled such as the non-existence of a built-in screen reader. Its absence puts Windows Phone usage out of the question for visually impaired users. There is an screen reader available from version 8.0.10501.127 but this only works with some apps and update to this version is not available to all devices at the time of writing. The platform has recently been experiencing slow growth in some world markets but is stagnating in others \cite{phone8market}  and it cannot be estimated how much effort will be put into the development of more accessibility features. It should be noted that the other two major platforms, iOS and Android both include the screen reader.
-\endinput
-%%
-%% End of file `ch01.tex'.
+Windows Phone 8 platform offers some features to make its accessibility to disabled users easier. However, there are still gaps to be filled such as the non-existence of a built-in screen reader. Its absence puts both Windows Phone 8 and 8.1 usage out of the question for visually impaired users. There is an limited screen reader option available from version 8.0.10501.127 \cite{wp8screenreader} but this only works with some apps and update to this version is not available to all devices at the time of writing. The platform has recently been experiencing slow growth in some world markets but is stagnating in others \cite{phone8market} and it cannot be estimated how much effort will be put into the development of more accessibility features. It should be noted that the other two major platforms, iOS and Android both include a screen reader.

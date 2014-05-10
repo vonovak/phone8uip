@@ -504,7 +504,7 @@
   \bgroup
   %\selectlanguage{czech}
   \begin{otherlanguage*}{czech}
-  \section*{\abstractname}
+  \section*{\AbstractName}
 }
 
 \def\stopAbstractCz{%
