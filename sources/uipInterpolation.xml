@@ -1,0 +1,7 @@
+<UIProtocol version="1.0">
+  <models>
+    <model id="cz.ctu.bp.sampleModel" update="partial" duration="500" interpolation="public.number.linear">
+      <property name="x" value="100" />
+    </model>
+  </models>
+</UIProtocol>

@@ -15,13 +15,18 @@ In this section, we will cover the most important classes of the application, to
 \input{tables/uipCommClasses}
 
 \subsubsection{Communication With UIP Server}
-As mentioned in Table TODO, the communication with server in implemented in UipConnection class which exposes its functionality for sending events to the rest of the application - namely the EventManager class. It also is responsible for processing any XML data received from server that is sent to it from a SocketWorker instance.
+As mentioned in Table \ref{tab:uipCommClasses}, the communication with server in implemented in UipConnection class which exposes its functionality for sending events to the rest of the application - namely the EventManager class. It also is responsible for processing any XML data received from server that is sent to it from a SocketWorker instance.
 \\
 SocketWorker is the low-level socket communication class which ultimately sends events to the server, such as interface requests or events informing about user actions. It also runs an instance of BackgroundWorker class which, in an extra thread, awaits data from the server. The reason there is a separate thread for receiving data is that we cannot make any assumptions about when the server will send data to the client. Generally speaking, server can decide to send model updates at any time, not only as a response to a certain user action.\\
 The communication was observed from another, already implemented client.
 
 \subsubsection{Model Updates and Binding}
 Any property of UIP document can, instead of direct value, contain a reference to a model and its property, as described in \ref{subsec:models}. As an example, let us consider a button. The text displayed in the button (its Content) can be either hard-coded into the UIP document or there can be a reference to a model property. If the reference is present, the ModelManager looks into an internally stored dictionary of models and if the model is present, the value of its corresponding property is immediately used. If that is not the case, ModelManager makes a request for the model and once it arrives, its corresponding property's value is used. In both cases, a binding is created so that the future updates of the model property are correctly propagated throughout the application.\\The code which acquires the models and creates binding between model properties and properties of UI elements makes heavy use of asynchronous methods. The async/await operations were introduced with C\# 5.0  and provide a developer with a comfortable way to deal with operations that are potentially blocking. Because requesting and receiving models happens over the internet, it can be considered such. If model request and receive was blocked within a synchronous process, the entire application would be forced to wait. However, by taking advantage of the asynchronous programming, the application continues with other work that doesn't depend on the web resource until the potentially blocking task finishes.
+
+\subsubsection{Interpolations (animations)}
+Interpolation allows to move UI controls on the canvas. It is implemented through event which is fired by activating a UI control which is supposed to be interpolated. The server responds by a model update which contains "interpolation" and "duration" attributes. The body of the model update contains the value to which the position will be updated. An example of such model  update is shown in listing 
+
+\lstinputlisting[label=uipInterpolation,caption=UIP model update specifying interpolation]{sources/uipInterpolation.xml}
 
 Both ModelManager and interface manager classes only need to be instantiated once, so that the application state is stored in one place. Therefore ModelManager and InterfaceManager are singleton classes.
 
@@ -46,3 +51,10 @@ The server asks the client to render an UIP element of class public.input.choice
 
 \subsubsection{Event Communication}
 Event management is relatively simple: two classes take care of it.
+
+
+
+consts class
+debugging messages
+configuration
+interpolation

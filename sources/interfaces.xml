@@ -5,7 +5,7 @@
   <interface class="ui.Interface2">
     <container class="public.container.panel">
       <element class="public.input.text" id="nameTextBox">
-        <property name="text" value="Enter first name" key="gui:fstName"/>
+        <property name="text" value="Enter first name"/>
       </element>
       <element class="ui.Interface1"/>
     </container>
