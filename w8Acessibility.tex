@@ -16,7 +16,7 @@ When a user installs an app, they can automatically use voice to access it by sp
 A developer can also define her own set of voice commands and allow users not only to open the app using voice but also to carry out more advanced tasks within the app \cite{wp8voice}. This is important for our work since it allows for exposing a wider range of commands to potential visually impaired users. Note that technically, this still happens from the outside of the app, as described in the previous section.
 
 \paragraph{Text to Speech (TTS)}
-TTS can be used to speak text to the user via the phone's speaker or headset.The spoken text can be simple strings or strings formatted according to the industry-standard Speech Synthesis Markup Language (SSML) Version 1.0 \cite{phone8speech}. TTS is also used in some of the other features for ease of access which are covered in the next section.
+TTS can be used to speak text to the user via the phone's speaker or headset. The spoken text can be simple strings or strings formatted according to the industry-standard Speech Synthesis Markup Language (SSML) Version 1.0 \cite{phone8speech}. TTS is also used in some of the other features for ease of access which are covered in the next section.
 
 \paragraph{Other Speech Features}
 A feature named Speech for phone accessibility allows the following \cite{wp8voice}:
@@ -32,4 +32,73 @@ User can assign a number to a person from the contact list and then say Say "Cal
 Windows phone 8 comes with more features for ease of access which can help lightly visually impaired users. User can change font size in selected build-in apps (The API for determining if the font size was changed by user is available only from WP 8.1 and the app developer can decide whether she will respect the user font size settings. \cite{wp8accText}), switch the display theme to high-contrast colors and use the screen magnifier \cite{wp8screenreader}. Mobile Accessibility is a set of accessible apps with a screen reader, which helps use the phone by reading the application content aloud. These applications include phone, text, email, and web browsing \cite{wp8screenreader}. When Mobile Accessibility is turned on, notifications like alarms, calendar events, and low battery warnings will be read aloud. This feature, however, is only available in version 8.0.10501.127 \cite{wp8screenreader} or later. For an unknown reason, an update to this version is not available for our phone.
 
 \subsubsection{Conclusions}
-Windows Phone 8 platform offers some features to make its accessibility to disabled users easier. However, there are still gaps to be filled such as the non-existence of a built-in screen reader. Its absence puts both Windows Phone 8 and 8.1 usage out of the question for visually impaired users. There is an limited screen reader option available from version 8.0.10501.127 \cite{wp8screenreader} but this only works with some apps and update to this version is not available to all devices at the time of writing. The platform has recently been experiencing slow growth in some world markets but is stagnating in others \cite{phone8market} and it cannot be estimated how much effort will be put into the development of more accessibility features. It should be noted that the other two major platforms, iOS and Android both include a screen reader.
+Windows Phone 8 platform offers some features to make its accessibility to disabled users easier. However, there are still gaps to be filled such as the non-existence of a built-in screen reader. Its absence puts both Windows Phone 8 and 8.1 usage out of the question for visually impaired users. There is an limited screen reader option available from version 8.0.10501.127 \cite{wp8screenreader} but this only works with some apps and update to this version is not available to all devices at the time of writing. The platform has recently been experiencing growth of about 6\% in some countries of Europe but only slow growth others \cite{phone8market} and it cannot be estimated how much effort will be put into the development of more accessibility features. It should be noted that the other two major platforms, iOS and Android both include a screen reader.
+
+
+
+
+\subsection{Android Accessibility}
+Similarly to the previous section, here we will analyze the accessibility options for devices running the Android operating system. We will analyze the features of the latest Android OS released at the time of writing, which is version 4.4, code name KitKat. It should be noted that there were no major updates to the accessibility options since Android 4.2.2 Jelly Bean.
+
+\subsubsection{Speech Features}
+Android too offers the option to interact with the device using speech and has some interesting accessibility features. Compared to Windows Phone 8, Android offers a wider language support. Similarly to Windows Phone 8, an Android developer can take advantage of speech recognition and text-to-speech (TTS). Android comes with a number of built-in voice commands but unlike the Windows Phone, Android does not allow developers to expose their own voice commands. The last important feature on Android is TalkBack screen reader.
+At the time of writing, the speech recognition supports more than 40 languages including even minor languages such as Czech. The text to speech does not have such a wide support.
+
+\paragraph{Speech Recognition}
+Users can give input to an app or accomplish tasks with it using speech recognition. An example usage can be dictating content of an SMS. As mentioned before, this feature supports many languages but on the other hand, internet connection is required \cite{androidRecog} because the recognition is done at Google servers. We do not consider this a major drawback, as nowadays a mobile internet connection is more available than ever.
+
+\paragraph{Voice Action Commands}
+In Android, Voice Action Commands are closely related to the Google Now feature. Google Now has a wide range of uses. It can also serve well to disabled people because it allows to get information using voice.
+In general, Google Now should provide the user with relevant information when they need it. Google describes it by the phrase “The right information at just the right time”. This includes telling the user the weather forecast, showing the best route to work, calling someone, creating a reminder and more \cite{googleNow}. The full list of Voice action Commands is in Table \ref{tab:asc}.
+
+Note that for some commands, the system gives you a spoken answer. The current drawback of the system is that it only supports English, French, German, Spanish, and Italian \cite{androidTTS}. With other languages, user can only make a voice-induced Google search with no voice response.
+
+\paragraph{Text to Speech (TTS)}
+TTS can be used to speak text to the user via the phone's speaker or headset. The spoken text can be simple strings. The industry-standard Speech Synthesis Markup Language (SSML) is not mentioned in the API documentation. Supported are only major world languages, enlisted in previous section. TTS is also used in TalkBack which is described in the next section.
+
+\paragraph{Other Speech Features}
+TalkBack is an important functionality that strives for more accessible phone control for visually impaired \cite{androidAccbility}. Basically, it is a touch-controlled screen reader. When enabled, user can drag finger across the screen selecting the components and getting their acoustic description. By double tapping anywhere in the screen, user can open/use the last selected item. TalkBack also supports gestures. This way, a user can get a complete description of the user interface \cite{androidAccbility}. The blog post of a blind accessibility engineer from Mozilla Foundation \cite{mozillaguy} claims that visually impaired users of this system still have to overcome some obstacles.
+
+\subsubsection{Other Tools for Ease of Access}
+Android too comes with more features for ease of access which can help lightly visually impaired users which include change of font size and the screen magnifier.
+
+\subsubsection{Conclusions}
+Compared to Windows Phone, Android has better accessibility options. It includes the usual functions, such as text to speech, speech recognition or font size settings. It also offers a built-in screen reader, called TalkBack. Android aims to be usable even for visually impaired.
+
+
+
+
+
+\subsection{iOS Accessibility}
+In this chapter, we will cover the accessibility of Apple's iOS. Again we consider the latest iOS released, which is version 7.0.4. Overall, the accessibility features of iOS are very similar to those of Android and therefore we will describe the features more briefly.
+
+\subsubsection{Speech Features}
+As with the previous two platforms, iOS also offers users to interact with a device using speech. iOS supports speech recognition and text-to-speech in 15 major languages (the same number as Windows Phone 8).
+iOS also comes with a number of built-in voice commands \cite{iosAccbility} but does not allow developers to expose their own voice commands.
+
+\paragraph{Speech Recognition - Dictation}
+Users can give input to an app or accomplish tasks with it using speech recognition. An example usage can be dictating content of a text. As mentioned before, this feature supports 15 languages and requires an internet connection.
+
+\paragraph{Voice Control - Siri}
+Siri in iOS can be thought of as an equivalent to Android's Google Now. Siri can send emails, set reminders and more \cite{iosAccbility}. If asked a question, it can read aloud the answer. 
+
+\paragraph{Text to Speech (TTS)}
+TTS can be used to speak text to the user via the phone's speaker or headset and this feature was added only recently, in iOS 7.0. The spoken text can be simple strings. The industry-standard Speech Synthesis Markup Language (SSML) is not mentioned in the API documentation.
+
+\paragraph{Other Speech Features}
+It could be said that Google's TalkBack is Apple's VoiceOver. Both offer very similar functions and they allow reading the content of the screen based on touch input and control of the device by gestures \cite{iosVoiceOver}.
+The mentioned blog post of the blind accessibility engineer from Mozilla Foundation favors VoiceOver over TalkBack \cite{mozillaguy}.
+
+\subsubsection{Other Tools for Ease of Access}
+iOS too comes with more features for ease of access which can help lightly visually impaired users. The user can change font size, invert Colors and use the screen magnifier (Zoom) \cite{iosAccbility}.
+iOS devices also support a number of Bluetooth wireless braille displays out of the box \cite{iosAccbility}. User can pair their braille display with the device and start using it to navigate it with VoiceOver. iPad, iPhone, and iPod touch include braille tables for more than 25 languages.
+
+\subsubsection{Conclusions}
+Apple's iOS was the first to offer advanced accessibility features and the first to become usable for visually impaired users. The accessibility options are comparable with the  feature set of Android. iOS allows developers to create apps accessible for a wide range of users.
+
+\subsection{Comparison of Analyzed Platforms}
+A quick overview on the accessibility features of the three most common mobile platforms that we analyzed is given in table \ref{tab:accbilityComparison}.
+
+\input{tables/accbilityComparison}
+
+

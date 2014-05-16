@@ -1,6 +1,6 @@
 \section{UIProtocol}
 This chapter introduces the reader to the UIProtocol, its architecture and communication between client and server.
-%Analyse UIP platform, focus on UIP client design.
+
 
 \subsection{About UIProtocol}
 Universal Interface Protocol (UIProtocol, UIP) is a user interface specification language \cite{uip} being developed at FEE CTU for research purposes. At the time of writing this thesis, the specification is not publicly available. UIProtocol provides means for describing user interfaces and transferring data related to interaction between user and an UIProtocol based application. It is designed to be cross-platform, programming language independent and easily localized \cite{uip}.\\
@@ -9,7 +9,8 @@ UIProtocol is an application protocol that allows for describing the hierarchica
 \begin{figure}[ht!]
 \centering
 \includegraphics[width=135mm]{pics/UIParchitecture.png}
-\caption{the client-server architecture of UIP}
+\caption{the client-server architecture of UIP, taken from \cite{uip}}
+
 \label{fig:UIParchitecture}
 \end{figure}
 \pagebreak
@@ -46,9 +47,8 @@ Events inform the server that some action was triggered at the client side (e.g.
 
 \subsubsection{Properties}
 \label{subsec:props}
-Properties are the most nested elements of UIP documents and define the visual appearance, positioning of GUI objects, their content and more. They are heavily used in many UIP's structures - in Models, in styling and more. Every property has to have a name, which defines what feature of the connected object is described by this property. For example the property in listing \ref{uipInterface} with name "text" defines the text displayed in the text field. Value is a constant that will define the text. The mentioned property can also contain the key attribute which, if set, binds the displayed value to a model property. 
-
-The part before the colon references a model and the part after colon references a property within the model. That is, if there is a model gui with property fstName, the value of the property is used. Moreover, whenever the value of the referenced property is updated by the server, the update is automatically reflected in all bound properties.
+Properties are the most nested elements of UIP documents and define the visual appearance, positioning of GUI objects, their content and more. They are heavily used in many UIP's structures - in Models, in styling and more. Every property has to have a name, which defines what feature of the connected object is described by this property. For example the property in listing \ref{uipInterface} with name "text" defines the text displayed in the text field. Value is a constant that will define the text.\\\\
+The mentioned property can also contain the key attribute which, if set, binds the displayed value to a model property. The part before the colon references a model and the part after colon references a property within the model. That is, if there is a model gui with property fstName, the value of the property is used. Moreover, whenever the value of the referenced property is updated by the server, the update is automatically reflected in all bound properties.
 
 \lstinputlisting[label=uipProperty,caption=Property key example]{sources/uipProperty.xml}
 
