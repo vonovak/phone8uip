@@ -1,0 +1,15 @@
+
+\begin{table}[htbp]
+  \centering
+  \caption{Results of monitoring and profiling}
+  \label{tab:tests}
+ \renewcommand{\arraystretch}{1.2}
+    \begin{tabularx}{\textwidth}{p{3cm}|X}
+    \rowcolor{mygray}
+    \textbf{Test} & \textbf{Result} \\
+       Monitoring & App startup time meets requirements. App is responsive. \\ \hline
+       Execution profiler & In some parts throughout the profiling, execution profiler reports high CPU usage by system threads.\footnotemark \\ \hline
+       Memory profiler & No issues found. \\       
+    \end{tabularx}%
+\end{table}%
+    \footnotetext{Full content of one of the reports: System and other apps are using 32,71\% of the CPU. This CPU usage may be caused by other tasks that are running on the system or they may be caused by system operations that are triggered by our app.}

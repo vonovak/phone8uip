@@ -1,11 +1,16 @@
 \chapter{Design}
-After analyzing the problem, this chapter will go through the design of the application architecture of our UIProtocol client. The design phase is of crucial importance as it is the time when important design decisions are made. In this phase, the application's architecture needs to be thought through so that its future extensions are relatively easy to implement and cost of maintenance is low.\\
-From the analysis we will conclude requirements for the application which will be developed. Further on, the sections will describe the design of several sub-systems which are responsible for handling the communication, models, events, inner representation of the UI elements, their rendering and more.\\
+After analyzing the problem, this chapter will go through the design of the application architecture of our UIProtocol client. The design phase is of crucial importance as it is the time when important design decisions are made. In this phase, the application's architecture needs to be thought through so that its future extensions are relatively easy to implement and cost of maintenance is low.
+
+From the analysis we will conclude requirements for the application which will be developed. Further on, the sections will describe the design of several sub-systems which are responsible for handling the communication, models, events, inner representation of the UI elements, their rendering and more. The chapter contains several UML diagrams. Note that most of them are simplified.
+
 Even though there are existing implementations of UIProtocol client, the design of this one was not influenced by any of them.
 
 \subsection{Requirements}
-The client application will be developed and run on Windows Phone 8 device. Since the entire user interfaces and information about events is intended to be transferred over wireless internet connection, there will be a delay present in the application's reaction time, which is a inescapable consequence of the client-server architecture. The delay should be reasonably small to allow for a comfortable usage of the application. Even with this delay, the application should perform well in terms of UI rendering times, reaction time and overall feel.\\
-There is a number of requirements an app should meet in order to be truly accessible. In our analysis, we found that the support of Windows Phone 8 for accessibility is lower than at the competing platforms. Namely, support for a key accessibility feature, a screen reader, is not present by default. This holds true even for the Windows Phone 8.1 which was released in February 2014. This can be a major flaw to the application accessibility – especially for visually impaired who would have to use a third-party screen reader in order to be able to navigate through the app. Apart from following the guidelines for developing accessible apps, as discussed in \ref{sec:accGuidelines}, we may propose some new features that could be implemented by UIProtocol to increase its own support for accessibility. At any rate, even with the Windows Phone 8 platform's low accessibility support, the developed app will remain a fully functional UIP client capable of displaying valid UIP documents.
+The client application will be developed and run on Windows Phone 8 device. Since the entire user interfaces and information about events is intended to be transferred over wireless internet connection, there will be a delay present in the application's reaction time, which is a inescapable consequence of the client-server architecture. The delay should be reasonably small to allow for a comfortable usage of the application. Even with this delay, the application should perform well in terms of UI rendering times, reaction time and overall feel.
+
+There is a number of requirements an app should meet in order to be truly accessible. In our analysis, we found that the support of Windows Phone 8 for accessibility is lower than at the competing platforms. Namely, support for a key accessibility feature, a screen reader, is not present by default. This can be a major flaw to the application accessibility – especially for visually impaired who would have to use a third-party screen reader in order to be able to navigate through the app.
+
+Apart from following the guidelines for developing accessible apps, as discussed in \ref{sec:accGuidelines}, we may propose some new features that could be implemented by UIProtocol to increase its own support for accessibility. At any rate, even with the Windows Phone 8 platform's low accessibility support, the developed app will remain a fully functional UIP client capable of displaying valid UIP documents.
 
 
 \subsubsection{Summary of Requirements}
@@ -29,12 +34,14 @@ Functional requirements:
   \item  Support for binding and model-wide binding
   \item  Support for interpolated model updates (animations)
   \item  Support for UI generator API
+  \item  Support for Events
   \item Support for absolute and grid layouts
   \item Support for styling (font size, colors, etc.)
 \end{itemize}
 
 \subsection{Client-server Communication}
-The client will communicate with the server over TCP-IP connection which will be handled by a standard socket. Upon this communication channel, UIProtocol XML files will be transferred.\\
+The client will communicate with the server over TCP-IP connection which will be handled by a standard socket. Upon this communication channel, UIProtocol XML files will be transferred.
+
 Once the client connects to the server and goes through the connection procedure described in \cite{uip}, the server sends the XMLs describing the UI. The UML diagram of the classes responsible for the communication is shown in figure \ref{fig:classComm}. Since some of the methods will only work with the passed parameters and not modify the object's state, they will be made static. 
 
 \begin{figure}[ht!]
@@ -44,12 +51,12 @@ Once the client connects to the server and goes through the connection procedure
 \label{fig:classComm}
 \end{figure}
 
-Apart from the mentioned classes that will serve for communicating the XML messages, there there will be another class responsible for acquiring resources (such as images) from the server. For this purpose, the server is awaiting a connection on another port than the XML server <-tohle lepe posat TODO and the client can open a connection and make a standard http request for the resource. This functionality will be implemented in the TcpConncetion class.
+Apart from the mentioned classes that will serve for communicating the XML messages, there there will be another class responsible for acquiring resources (such as images) from the server. For this purpose, the server is awaiting a HTTP connection on another port and the client can open a connection and make a standard HTTP request for the resource. This functionality will be implemented in the \texttt{TcpConncetion} class.
 
 \subsection{Parsing XML Into Inner Object Representation}
-After the UIP documents will be received by the UipConnection class, they will be passed to instances of ModelManager and InterfaceManager classes. ModelManager will be responsible for processing possible new models or model updates and will be discussed later in more detail.\\
-All of the UIP elements need to be represented by objects, so that 
-The InterfaceManager class will process the XML data that describes the UI by recursively traversing the XML tree and creating instances of Interface, Container and Element classes, based on the type of the considered XML node. These instances will represent the UIP elements of the same name - UIP interface, UIP container and UIP element. This way, every UIP element will be parsed into an inner object representation that will be easy to handle when in further work with the objects.
+After the UIP documents will be received by the \texttt{UipConnection} class, they will be passed to instances of \texttt{ModelManager} and \texttt{InterfaceManager} classes. \texttt{ModelManager} will be responsible for processing possible new models or model updates and will be discussed later in more detail.
+
+All of the UIP elements need to be represented by objects, so that they are easily manipulated. To create the object representation, \texttt{InterfaceManager} class will process the XML data that describes the UI by recursively traversing the XML tree and creating instances of \texttt{Interface}, \texttt{Container} and \texttt{Element} classes, based on the type of the considered XML node. These instances will represent the UIP elements of the same name - UIP interface, UIP container and UIP element. This way, every UIP element will be parsed into an inner object representation that will be easy to handle when in further work with the objects.
 
 \begin{figure}[ht!]
 \centering
@@ -58,14 +65,15 @@ The InterfaceManager class will process the XML data that describes the UI by re
 \label{fig:classDocument}
 \end{figure}
 
-An important component is the IRenderable interface from whom the Interface, Container and Element classes inherit. This interface represents the functionality all of the classes have in common - most importantly the UIP class (i.e. type of the UI control - see todo), UIP properties and contained elements. IRenderableContainer only extends the IRenderable interface by adding a method for obtaining a layout. Since layout is a container feature, only Interface and Container classes will inherit from it.
+An important component is the \texttt{IRenderable} interface from whom the \texttt{Interface}, \texttt{Container} and \texttt{Element} classes inherit. This interface represents the functionality all of the classes have in common - most importantly the UIP class (i.e. type of the UI control - see \ref{uipProperty} for example of \texttt{public.input.text} which represents the C\#'s \texttt{TextBox}), UIP properties and contained elements. \texttt{IRenderableContainer} only extends the \texttt{IRenderable} interface by adding a method for obtaining a layout. Since layout is a container feature, only \texttt{Interface} and \texttt{Container} classes will inherit from it.
 
 \subsection{Managing Models and Binding}
-The client, to conform the UIP specification must be a thin client, i.e. it will only store as much data as is needed to render the required interfaces and not execute any code on that data. The data shown to the user can be either constant or come from models, which are designed as a data storage. Models will be managed by one instance of ModelManager class.\\
-If an UIP element has a property that refers to a model, ModelManager will be responsible for requesting the model containing this property. Once the model is received, ModelManager will store all its properties and will manage future model updates. Note that the updates can come from the server at any time. ModelManager will also contain <zlepsit TODO> a reference to InterfaceManager because server's models can contain a request to render an interface. The relationship between classes that are involved in Model management is shown in figure \ref{fig:classModel}.
-\\
-todo binding
-\\
+The client, to conform the UIP specification must be a thin client, i.e. it will only store as much data as is needed to render the required interfaces and not execute any code on that data. The data shown to the user can be either constant or come from models, which are designed to be a data storage. Models will be managed by one instance of \texttt{ModelManager} class.
+
+If an UIP element has a property that refers to a model, \texttt{ModelManager} will be responsible for requesting the model containing this property. Once the model is received, \texttt{ModelManager} will store all its properties and will manage future model updates. Note that the updates can come from the server at any time. \texttt{ModelManager} will also need a reference to \texttt{InterfaceManager} because server's models can contain a request to render an interface. The relationship between classes that are involved in Model management is shown in figure \ref{fig:classModel}.
+
+When a UIP property refers to a model, a binding will be created so that when the UIP property is updated, the update is shown in the UI. For that reason there has to be a data binding between the two. We will make use of the data binding API which is built-in to the Windows Phone platform.
+
 \begin{figure}[ht!]
 \centering
 \includegraphics[width=145mm]{pics/3/classModel.png}
@@ -73,12 +81,11 @@ todo binding
 \label{fig:classModel}
 \end{figure}
 
-
 \subsection{Managing Interfaces}
-Interface is the root element for all UI controls in UIP documents. An application can contain a large number of interfaces. We therefore need a class to keep all the information. InterfaceManager will serve as a place for storing information about received and requested interfaces. The most important methods implemented in it will be for adding received interfaces, obtaining an interface and rendering. The process of rendering is described more closely in the next section.
+Interface is the root element for all UI controls in UIP documents. An application can contain a large number of interfaces. We therefore need a class to keep the interface information. \texttt{InterfaceManager} will serve as a place for storing information about received and requested interfaces. The most important methods implemented in it will be for adding received interfaces, obtaining an interface and rendering. The process of rendering is described more closely in the next section.
 
 \subsection{Rendering the UI}
-After the received XML description of the user interface is processed, InterfaceManager calls the Render() method of the Renderer class. This method traverses the tree of the newly created instances of classes from figure \ref{fig:classDocument} and for each one creates a wrapper class which inherits from UipBase. 
+After the received XML description of the user interface is processed, \texttt{InterfaceManager} calls the \texttt{Render()} method of the \texttt{Renderer} class. This method traverses the tree of the newly created instances of classes from figure \ref{fig:classDocument} and for each one creates an instance of wrapper class which inherits from \texttt{UipBase}. This instance, as described in the next section, contains the platform-native UI component which is immediately rendered to the user.
 
 \begin{figure}[ht!]
 \centering
@@ -89,17 +96,24 @@ After the received XML description of the user interface is processed, Interface
 
 
 \subsection{Representing the Platform-native UI Components}
-In order to support easy addition of the supported UI elements, we created classes shown in figure todo. There is an abstract base class, UipBase which contains methods for model updates, styling and element dimensions.\\
+The information about UI elements comes from the server in form of XML description. This description is parsed into inner object representation - classes shown in figure \ref{fig:classDocument}. There is one more step toward the controls that are rendered to the user which involves the transition to the platform-native components.
+
+The platform-native components will be wrapped into other classes with names indicating the component which is wrapped by the class (i.e. \texttt{UipPasswordBox} will be wrapper class for WP8's \texttt{PasswordBox}). There will be an abstract base class, \texttt{UipBase} which will contain everything the wrapper classes have in common: methods for binding to models, and support for styling and element dimensions.\\
 Any particular UI element needs to inherit from the base class in order to support rendering, model updates and other functionality provided by the base class.
 
 \subsection{Events}
-The application is designed to support the client-to-server communication in form of events. Events are the only data sent by the client and their intent is to inform server of an user action or request missing data - models.\\
-
+The application is designed to support the client-to-server communication in form of events. Events are the only data sent by the client and their intent is to inform server of an user action or request missing data - models.\\\\
 Events could be divided into two categories.\\
-Events that are static and are hard-coded within the application. These events are used rarely, typically while going through the procedure of connecting to the server. Currently these are the "public.connection.connect" and "public.request.model" request for "public.application".
-Other events are the ones triggered by the user or by the client itself, when it requests a model. These events are dynamic, created at runtime. The event firing - e.g. notifying server of an action taking place, is a relatively simple process which will be handled by two classes.\\
-EventManager: the class's only task is to provide a method for sending an event. The class won't contain any state and will therefore be static, which will make it easily accessible from any point of the application. Its job will be to merely forward the events to SocketWorker class instance which will do the actual job of sending them to the server.\\
-Event class will represent a particular event that will be sent to the server. It will contain all the necessary information for the server to be able to identify the event that has been triggered, as specified in todo. This information will be stored in properties.
+\begin{description}
+  \item[Static] \hfill \\
+ Events that are static and are hard-coded within the application. These events are used rarely, typically while going through the procedure of connecting to the server. Currently these are the \texttt{public.connection.connect} and \texttt{public.request.model} request for \texttt{public.application}.
+  \item[Dynamic] \hfill \\
+ Other events are the ones triggered by the user or by the client itself, when it requests a model. These events are dynamic, created at runtime. The event firing - e.g. notifying server of an action taking place, is a relatively simple process which will be handled by two classes.
+\end{description}
+Event class will represent a particular event that will be sent to the server. It will contain all the necessary information for the server to be able to identify the event that has been triggered, as specified in \cite{uip}. This information will be stored in properties.
+
+\texttt{EventManager} class will provide a method for sending an event. The class won't contain any state and will therefore be static, which will make it easily accessible from any point of the application. Its job will be to wrap the event into an UIP Document header and forward the event to \texttt{SocketWorker} class instance which will do the actual job of sending them to the server.
+
 
 \begin{figure}[ht!]
 \centering
@@ -109,20 +123,29 @@ Event class will represent a particular event that will be sent to the server. I
 \end{figure}
 
 \subsection{Properties}
-Properties are the most nested objects in UIP documents. They are used extensively within many classes, including Layout, Event or Element. In all classes they will be stored in dictionaries, identified by their name.
+Properties are the most nested objects in UIP documents. They are used extensively within many classes, including \texttt{Layout}, \texttt{Event} or \texttt{Element}. In all classes they will be stored in dictionaries, identified by their name.
 
-The ModelProperty class used in Model will inherit from Property class. They are directly attached to the particular class instance.
+The \texttt{ModelProperty} class used in Model will inherit from \texttt{Property} class. They are directly attached to the particular class instance.
 
 \subsection{Layouts}
-... Two layout types will be supported in our client: absolute and grid. Even though absolute layout is not recommended by the accessibility guidelines ref todo it is a basic form of layout and decision has been made to support it.
-Layouts are a feature of containers and interfaces which support it through the I render able container interface. Every container, therefore can place its content into one of the two. As with any property, the positioning will be Bindable. The laYout is represented by the layout class. Haha obvious.
+Windows Phone 8 supports two main types of layouts: absolute and dynamic.
+In an absolute layout, child elements are arranged in a layout panel by specifying their exact locations relative to their parent element. Absolute positioning doesn't consider the size of the screen.\\\\
+In a dynamic layout, the child elements are arranged by specifying how they should be arranged and how they should wrap relative to their parent. With dynamic layout, the user interface appears correctly on various screen resolutions.
+
+Both layout types will be supported in our client. Even though absolute layout is not recommended by the accessibility guidelines \cite{wp8guide} it is a basic form of layout and decision has been made to support it.
+
+Layouts are a feature of containers and interfaces which support it through the \texttt{IRenderableContainer} interface. Every container, therefore can place its content into one of the two layouts. As with any property, the positioning will be binding-enabled.
 
 \subsection{Configuration}
-Client will have support for basic co figuration- I.e. ports on which the socket is tying to connect. Also the constants which are used in the portions of XML throughout the application will be stored in one static class so that they are easy to change. 
+Client will have support for basic configuration - i.e. ports on which port the socket is tying to connect to the UIP server and the HTTP server. Also the constants which are used in the portions of XML throughout the application will be stored in one static class so that they are easy to change. 
 
 \subsection{Behaviors}
-Behaviors are used to attach event listeners to UI controls. C\# has a built-in support for events through Event and Delegate classes and we will take advantage of it.\\
-Behaviors will be attached to the classes inheriting from UipBase as event handlers. Each handler is for one type of behavior 
+Behaviors are used to attach event listeners to UI controls. C\# has a built-in support for events through Event and Delegate classes and we will take advantage of it.
+
+Behaviors will be attached to the classes inheriting from \texttt{UipBase} as event handlers. Each handler is for one type of behavior and when the event is fired, the event handler catches it.
+
+\subsection{Interpolation}
+The client will support interpolation of UI controls. In context of UIProtocol, interpolation means animation of UI elements. For example, some action may trigger interpolation which will cause an UI element to move on the screen of the phone. A model update will specify the direction, duration and position where the UI element should move. UIProtocol specifies multiple types of interpolation, our client will only support linear and immediate interpolation.
 
 %\begin{figure}[ht!]
 %\centering
@@ -131,4 +154,4 @@ Behaviors will be attached to the classes inheriting from UipBase as event handl
 %\label{fig:classProperty}
 %\end{figure}
 
-behavior, layouts, positions, settings, interpolace
+%positions, interpolace

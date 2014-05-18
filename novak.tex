@@ -15,6 +15,7 @@
 \usepackage{multirow}
 \usepackage{graphicx}
 \usepackage{color, colortbl}
+\usepackage{courier}
 
 %tabularx for table width equal to textwidth
 \usepackage{tabularx}
@@ -51,6 +52,8 @@
  
 \definecolor{mygray}{cmyk}{0.43, 0.35, 0.35,0.01} 
  
+
+ 
  \lstloadlanguages{% Check Dokumentation for further languages ...
          %[Visual]Basic
          %Pascal
@@ -77,12 +80,12 @@
 %% ======================================================== thesis info
 \startThesisInfo
   \Title{Accessible UIP client for Windows Phone 8}
-  \Author{Vojtech Novak}
+  \Author{Vojtěch Novák}
   \AuthorEmail{vonovak@gmail.com} % optional
   %\ThesisUrl{http://fel.cvut.cz/???/???-bsc.pdf} % optional
   \Date{\today}
   \Department{\\Dept. of Computer Graphics and Interaction}
-  \Advisor{Macik Miroslav Ing.}
+  \Advisor{Macík Miroslav Ing.}
   \KeywordsCz{Navigace, Generování UI, Přístupnost, Windows Phone 8, UIProtocol, C\#}
   \KeywordsEn{Navigation, UI Generation, Accessibility, Windows Phone 8, UIProtocol, C\#}
   %\AssignmentPage{assignment.pdf} % insert official assignment if given
@@ -110,8 +113,8 @@
 \stopFrontMatter
 
 \startBodyMatter
-  \include{introduction}
-  \include{overallAnalysis}
+  \input{introduction}
+  \input{overallAnalysis}
   \input{uipAnalisys}
   \input{w8Acessibility}
   \input{navigationSystems}

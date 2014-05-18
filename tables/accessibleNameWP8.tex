@@ -7,8 +7,8 @@
     \rowcolor{mygray}
     \textbf{Element type} & \textbf{Description} \\
     Static text & For TextBlock and RichTextBlock elements, an accessible name is automatically determined from the visible (inner) text. All of the text in that element is used as the name. \\ \hline
-    Images & The XAML Image element does not have a direct analog to the HTML alt attribute of img and similar elements. To provide a name, AutomationProperties.Name can be used. \\ \hline
+    Images & The XAML Image element does not have a direct analog to the HTML alt attribute of img and similar elements. WP8 does not provide an alternative text. \\ \hline
     Form elements & The accessible name for a form element should be the same as the label that is displayed for that element.\\ \hline
-    Buttons and links & By default, the accessible name of a button or link is based on the visible text, using the same rules as described in the first row of the table. In cases where a button contains only an image, AutomationProperties.Name can be used to provide a text-only equivalent of the button's intended action. \\
+    Buttons and links & By default, the accessible name of a button or link is based on the visible text, using the same rules as described in the first row of the table. In cases where a button contains only an image, WP8 does not provide an alternative text. \\
     \end{tabularx}%
 \end{table}%

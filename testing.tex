@@ -1,23 +1,41 @@
 \chapter{Testing}
-Testing is an important part of any application's development cycle. By testing we want to show that the client is able to process valid UIP documents. In order to do so, we created a testing application which will cover the following scenarios:\\
+Testing is an important part of any application's development cycle. By testing we want to show that the client is able to process valid UIP documents. We will perform two types of tests: test using a UIP application on a Windows Phone 8 device and unit tests. Visual Studio offers means for running and debugging the application.
 
+\section{Testing Application}
+Testing was primarily done by directly running the developed solution on a HTC device whose details are listed in table \ref{tab:htc}. For the purpose of testing, we developed a testing app written in UIProtocol XML which was then run by the client.\\\\
+The testing application which will cover the following scenarios:\\
 
-\begin{itemize}
-  \item Interface inclusion
-  This test evaluates whether including one interface into other functions.
-  \item Model-wide binding
-  In our testing application we bound several properties to models. The binding was tested with: text color, text size, position of UI control (interpolation), integer value
-  \item Events
-\end{itemize}
+\begin{description}
+\item[Interface switching] \hfill \\
+  Switching of the interfaces is one of the basic tasks a UIProtocol client has to implement, since this is the mechanism of navigating through the application. Our testing app contains several interfaces with different UI components and layouts.
+\item[Models and their updates (including interpolated] \hfill \\
+  The testing application contains several situations when a model update is sent from the server, including a linearly interpolated model update which is used to animate button position.
+  \item[Interface inclusion] \hfill \\
+  This test evaluates whether including one interface into other works as expected. Interfaces can be included using both UIP \texttt{Element} and \texttt{Container}.
+  \item[Model-wide binding] \hfill \\
+  In our testing application we bound several properties to models. The binding was tested with: text color, text size, position of UI control (interpolation), integer value.
+    \item[Events] \hfill \\
+    Testing application contained a several events that were triggered by different user actions. The events were sent by different button presses (button, radiobutton) using several UIP \texttt{Behavior}s todo).
+\end{description}
 
-splneni pozadavku,
-testing application
+\input{tables/htc}
+
+\section{Unit Testing}
+To widen the coverage of testing we also added unit tests of the core classes to increase the probability of detecting bugs that were not discovered while running the testing application. The unit tests cover the most important classes of the project. The list of unit tests follows:
+-todo
+
+\section{Monitoring and Profiling}
+Visual Studio contains several features that help to understand the quality of the application, ranging from code analysis to profiling. In this section we will present the results of Visual Studio's monitoring and profiling.
+
+The app monitoring feature aims to capture key metrics that are relevant from a quality perspective, and then to rate the application based on these metrics \cite{wp8monitoring}.
+
+The goal of profiling is to help understand the performance of an application \cite{wp8profiling}. Visual Studio offers app performance testing using an Execution and Memory profilers. Execution profiler analyzes the performance of drawing visual items and method calls in the code \cite{wp8profiling}. Memory profiler analyzes object allocation and the use of textures in the app \cite{wp8profiling}.
+
+We performed all of these tests and summarized the results into table \ref{tab:tests}. The results revealed, that sometimes the application probably has high CPU usage. Significant bugs or errors were otherwise not found. However, it must be noted that the testing application was not large and so the testing might not have been thorough.
+
+\input{tables/tests}
+
 unit testy
-novy chapter conclusions / conclusion and future work
-slovnicek pojmu a pak \emph{ewew}
+slovnicek pojmu
 prefetching
-
-Testing was primarily done by directly running the developed solution on the provided windows phone device (HTC 8S). Visual Studio offers means for running and debugging the application which allow for fast development. 
-We developed a testing app written in UIP XML language which was then run by the developed client. This application covered the testing of switching interfaces, including them, models and their updates, animations and events.
-
-To widen the coverage of testing we also added unit tests which should detect bugs that were not discovered while running the testing application. The unit tests cover the most important classes of the project.
+narrator (jinam)

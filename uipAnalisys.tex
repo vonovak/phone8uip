@@ -1,10 +1,13 @@
 \section{UIProtocol}
 This chapter introduces the reader to the UIProtocol, its architecture and communication between client and server.
 
-
 \subsection{About UIProtocol}
-Universal Interface Protocol (UIProtocol, UIP) is a user interface specification language \cite{uip} being developed at FEE CTU for research purposes. At the time of writing this thesis, the specification is not publicly available. UIProtocol provides means for describing user interfaces and transferring data related to interaction between user and an UIProtocol based application. It is designed to be cross-platform, programming language independent and easily localized \cite{uip}.\\
-UIProtocol is an application protocol that allows for describing the hierarchical structure of GUIs along with the placement and visual appearance of the containers and components. Implemented are its XML, JSON and binary versions. It is designed for a client-server system and for facilitating client-server applications it defines the communication rules between the two. The communication is based on an exchange of XML (or other supported) documents. The client first initiates the communication and receives a description from the server.\\The description can be of four different types: interfaces, i.e. the UI components and containers, models which contain the data displayed in the UI components and actions. The communication from client to server only consists of event descriptions, that is, actions that the user has done (i.e. a button click). The architecture of UIProtocol, is shown in figure \ref{fig:UIParchitecture} and it indicates the information flow between client and server.
+Universal Interface Protocol (UIProtocol, UIP) is a user interface specification language \cite{uip} being developed at FEE CTU for research purposes. At the time of writing this thesis, the specification is not publicly available. UIProtocol provides means for describing user interfaces and transferring data related to interaction between user and an UIProtocol based application. It is designed to be cross-platform, programming language independent and easily localized \cite{uip}.\\\\
+The goal of UIProtocol is to simplify development for all platforms: with UIProtocol, a developer only has to describe the application and event handlers once, and the application then runs on all platform with UIP client implementation. This should simplify the development process and make one application easily available to many platforms.\\\\
+
+UIProtocol is an application protocol that allows for describing the hierarchical structure of GUIs along with the placement and visual appearance of the containers and components. Implemented are its XML, JSON and binary versions. It is designed for a client-server system and for facilitating client-server applications it defines the communication rules between the two. The communication is based on an exchange of XML (or other supported) documents. The client first initiates the communication and receives a description from the server.
+
+The description can be of four different types: interfaces, i.e. the UI components and containers, models which contain the data displayed in the UI components and actions. The communication from client to server only consists of event descriptions, that is, actions that the user has done (i.e. a button click). The architecture of UIProtocol, is shown in figure \ref{fig:UIParchitecture} and it indicates the information flow between client and server.
 
 \begin{figure}[ht!]
 \centering
@@ -13,30 +16,44 @@ UIProtocol is an application protocol that allows for describing the hierarchica
 
 \label{fig:UIParchitecture}
 \end{figure}
-\pagebreak
 
-Let us give an example of when an event is sent to the server:\\
-Consider a situation when a user requests a weather app to his device. As he enters his location and presses a button to request the weather information, part of the job is done directly by the client and the other part is sent to the server. The part done directly at the client are easy tasks, such as visual effects when pressing the button. The request for weather information is then sent to the server (in a form of event). Server processes the request and responds by sending the interface structure, components and the weather data. This is then displayed to the user who then has other options to interact with the app.\\
+Let us give an example of when an event is sent to the server:\\\\
+Consider a situation when a user requests a weather app to his device. As he enters his location and presses a button to request the weather information, part of the job is done directly by the client and the other part is sent to the server. The part done directly at the client are easy tasks, such as visual effects when pressing the button. The request for weather information is then sent to the server (in a form of event). Server processes the request and responds by sending the interface structure, components and the weather data. This is then displayed to the user who then has other options to interact with the app.
+
 The documents of UIProtocol can be sent in either direction usually through a single channel without waiting for a request, e.g. server can send updates to the client as soon as the displayed information needs to be updated, without waiting for an update request. Should there be such need there is the possibility of both client and server running on the same machine although this is not a typical usage.
 
 \subsubsection{UIProtocol Client}
-UIProtocol client is thin, i.e. no application code is executed on the client side \cite{uip}. The device running the client is thought to be the one user directly uses, that is, it renders the content to the user and receives input from her. From the UIProtocol point of view, the client device is also considered insecure, i.e. the device may be misused to send invalid data to the server and may be used to attack it. The UIP client may not implement the whole feature set defined by UIProtocol \cite{uip}. What has to be implemented is the minimal functionality, e.g. a client that is able to render a user interface, sending event information to the server and update the application it by data coming from it.
+UIProtocol client is thin, i.e. no application code is executed on the client side \cite{uip}. The device running the client is thought to be the one user directly uses, that is, it renders the content to the user and receives input from her. From the UIProtocol point of view, the client device is also considered insecure, i.e. the device may be misused to send invalid data to the server and may be used to attack it.
+
+The UIP client may not implement the whole feature set defined by UIProtocol \cite{uip}. What has to be implemented is the minimal functionality, e.g. a client that is able to render a user interface, sending event information to the server and update the application it by data coming from it. A use case diagram of actions performed by user on the client is shown in figure \ref{fig:UIPusecase}.
 
 \subsubsection{UIProtocol Server}
-UIProtocol server is the part of the architecture which is responsible for evaluating the client events and sending a correct response - this is where the application logic is executed \cite{uip}. It must be able to service multiple clients simultaneously and is intended to run on a machine which is considered safe \cite{uip}.
+UIProtocol server is the part of the architecture which is responsible for evaluating the client events and sending a correct response - this is where the application logic is executed \cite{uip}. It must be able to service multiple clients simultaneously and is intended to run on a machine which is considered safe \cite{uip}. A use case diagram of server actions is shown in figure \ref{fig:UIPusecase}.
+
+\begin{figure}[ht!]
+\centering
+\includegraphics[width=120mm]{pics/usecase.png}
+\caption{Use case diagram for user and server}
+
+\label{fig:UIPusecase}
+\end{figure}
 
 \subsection{Syntax of UIProtocol}
-The UIP document syntax is in Listing \ref{uipSyntax} shown are the four possible tags with the root element, with the actions tag being optional. The tags define the behavior of the application and are covered later in the chapter, with the exception of actions tag.
+The UIP document syntax is in Listing \ref{uipSyntax} shown are the four possible tags with the root element, with the actions tag being optional. The tags define the behavior of the application and are covered later in the chapter.
+
+Every UIProtocol document must contain an XML header with the version and encoding (UTF-8 recommended).
 
 \lstinputlisting[label=uipSyntax,caption=UIP document Syntax]{sources/uipSyntax.xml}
 
-Every UIProtocol document must contain an XML header with the version and encoding (UTF-8 recommended).
+
 
 \subsection{Elements of UIProtocol Communication}
 As mentioned previously, the information exchange between client and server concerns Interfaces, Models, Actions (which are sent from server to client) and events (sent from client to server). In the following subsections we will describe these in greater detail and also include more information on UIProtocol syntax.
 
 \subsubsection{Interfaces}
-Interface describes the structure and components of the user interface. Every interface can nest containers and elements that form a part of user interface. An example can be seen in listing \ref{uipInterface}. The listing includes containers and elements of different types, for example "public.input.text" is a standard component which will be rendered as an element into which a user can enter text. It also shows how interfaces can be embedded. This is done by including an element or container with class name corresponding to different interface's class.\\The interfaces are uniquely identified by the class attribute (unlike most other objects in UIProtocol and other markup languages identified by id attribute). Note that the element tag can have an id attribute, as shown in listing \ref{uipInterface}.
+Interface describes the structure and components of the user interface. Every interface can nest containers and elements that form a part of user interface. An example can be seen in listing \ref{uipInterface}. The listing includes containers and elements of different types, for example "public.input.text" is a standard component which will be rendered as an element into which a user can enter text. It also shows how interfaces can be embedded. This is done by including an element or container with class name corresponding to different interface's class.
+
+The interfaces are uniquely identified by the class attribute (unlike most other objects in UIProtocol and other markup languages identified by id attribute). Note that the element tag can have an id attribute, as shown in listing \ref{uipInterface}.
 
 \lstinputlisting[label=uipInterface,caption=Interface Description Example]{sources/interfaces.xml}
 todo containers and elements - and the classes of elements
@@ -45,18 +62,24 @@ todo containers and elements - and the classes of elements
 Events inform the server that some action was triggered at the client side (e.g. a button press) or that there was some other update (e.g. change in sensor readings). This is the basic mechanism of client to server communication and therefore has to be supported by client. The event element contains a unique id which specifies the event source. An event can contain any number of properties which describe it more closely. An example is shown in listing \ref{uipEvents}.
 \lstinputlisting[label=uipEvents,caption=Events Example]{sources/uipEvents.xml}
 
+\subsubsection{Actions}
+Actions define procedures that the client can carry out by itself when an event is triggered, without the need to ask server for its reaction. Implementing actions is optional and our UIP client will not support them.
+
 \subsubsection{Properties}
 \label{subsec:props}
-Properties are the most nested elements of UIP documents and define the visual appearance, positioning of GUI objects, their content and more. They are heavily used in many UIP's structures - in Models, in styling and more. Every property has to have a name, which defines what feature of the connected object is described by this property. For example the property in listing \ref{uipInterface} with name "text" defines the text displayed in the text field. Value is a constant that will define the text.\\\\
+Properties are the most nested elements of UIP documents and define the visual appearance, positioning of GUI objects, their content and more. They are heavily used in many UIP's structures - in Models, in styling and more. Every property has to have a name, which defines what feature of the connected object is described by this property. For example the property in listing \ref{uipInterface} with name "text" defines the text displayed in the text field. Value is a constant that will define the text.
+
 The mentioned property can also contain the key attribute which, if set, binds the displayed value to a model property. The part before the colon references a model and the part after colon references a property within the model. That is, if there is a model gui with property fstName, the value of the property is used. Moreover, whenever the value of the referenced property is updated by the server, the update is automatically reflected in all bound properties.
 
 \lstinputlisting[label=uipProperty,caption=Property key example]{sources/uipProperty.xml}
 
 \subsubsection{Models and Model Binding}
-Models serve as a storage for data. This data is uniquely identified by model name and name of a property within that model - it is the property that contains the data. As explained in the previous paragraph, properties can be used to define content and appearance of UI controls. The property value can be provided as a constant, or it can refer to a model, using the key. The key is separated by colon into two parts - the first referencing a model and the second referencing a property within the model (see listing \ref{uipProperty} for an example).\\
+Models serve as a storage for data. This data is uniquely identified by model name and name of a property within that model - it is the property that contains the data. As explained in the previous paragraph, properties can be used to define content and appearance of UI controls. The property value can be provided as a constant, or it can refer to a model, using the key. The key is separated by colon into two parts - the first referencing a model and the second referencing a property within the model (see listing \ref{uipProperty} for an example).
+
 For example, if a property representing a UI control's text contains a nonempty key, the appropriate model is requested from server. Upon its arrival, the text of the UI control is set to the property's value. Also, a data binding between the UIP property and the UI element's text property is be created so that when the client receives an update of the model, the UI element's bound property (text, in this example) gets immediately updated.
-\\
-When updating the value of a model property, all UI elements bound to the model property are updated. For example, there may be two representations of humidity level in a given environment (text and a graphical representation). If they are both bound to the same model property, update of the given property will be immediately reflected by both.\\
+
+When updating the value of a model property, all UI elements bound to the model property are updated. For example, there may be two representations of humidity level in a given environment (text and a graphical representation). If they are both bound to the same model property, update of the given property will be immediately reflected by both.
+
 Note that Models in UIP are application-wide so they can be referred to from any point of the application.
 
 \endinput
