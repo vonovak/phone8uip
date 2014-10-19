@@ -1,12 +1,13 @@
 \begin{table}[htbp]
   \centering
-  \caption{UIP Server Connection Classes}
+  \caption{UIP Server connection classes}
   \label{tab:uipCommClasses}
  \renewcommand{\arraystretch}{1.2}
-    \begin{tabularx}{\textwidth}{p{2.5cm}|X}
+    \begin{tabularx}{\textwidth}{p{3cm}|X}
     \rowcolor{mygray}
-    \textbf{Class Name} & \textbf{Class Description} \\
-       UipConnection & Initiates the connection and is responsible for sending events to the server and processing its responses. Does basic XML validation. \\ \hline
-       SocketWorker & Handles the socket communication with UIP server. Sends events and runs a separate thread for receiving server's responses. \\
+    \textbf{Class name} & \textbf{Class description} \\
+      UipConnection & Initiates the connection and is responsible for sending events to the server and processing its responses. Does basic XML validation. \\ \hline
+       SocketWorker & Handles the socket communication with UIP server. Sends events and runs a separate thread for receiving server's responses. \\ \hline
+       HttpConncetion & Class responsible for acquiring resources via HTTP.
     \end{tabularx}%
 \end{table}%

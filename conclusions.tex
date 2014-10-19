@@ -1,49 +1,58 @@
 \chapter{Conclusions and Future Work}
-Navigation and mobility are key abilities to a comfortable living. Navigating outdoors is, thanks to global systems such as GPS significantly simplified. Indoor navigation remains a much less developed field. There are research projects that develop solutions for indoor navigation based on various technologies. One of such projects is NUIP from FEE CTU which combines NaviTerier (path planner and directions generator) with UIProtocol.
+Navigation and mobility are key abilities to a comfortable living. Navigating outdoors is, thanks to global systems such as GPS significantly simplified. Indoor navigation remains a less developed field. There are research projects that develop solutions for indoor navigation based on various technologies. One of such projects is NUIP from FEE CTU which combines NaviTerier (path planner and directions generator) with UIProtocol.
 
 We analyzed the state of the art in indoor navigation and compared the accessibility features of the most common smartphone platforms. The reader was also introduced to UIProtocol, its architecture and how it functions.
 
-The goal of the thesis was to implement an UIProtocol client supporting the basic features every UIP client needs to support. The platform of development was chosen to be Windows Phone 8. The client was expected to be able to be used within the NUIP project and consequently, we researched ways of making it more accessible to people with disabilities. We found, however, that the Windows Phone 8 platform is not suitable for visually impaired.
+The goal of the thesis was to implement an UIProtocol client supporting the basic UIP features. The platform of development was chosen to be Windows Phone 8. The client was expected to be able to be used within the NUIP project and consequently, we researched ways of making it accessible to people with special needs. We found, however, that the Windows Phone 8 platform is not very friendly toward the visually impaired. Yet, the developed client remains a functional UIP client for the Windows Phone 8 platform.
 
 \section{Current Features}
 Within the bachelor thesis we successfully implemented a basic UIProtocol client which implements:
 
-\begin{description}
-  \item[Basic UI controls] \hfill \\
-  
-  \item[Binding and model-wide binding] \hfill \\
-  \item[Graceful degradation for unsupported elements] \hfill \\
-  \item[Support for UI generator API] \hfill \\
-  todo
-  \item[Support for interpolated model updates (animations)] \hfill \\
-  \item[Support for absolute and grid layouts] \hfill \\\\
-  \item[Support for styling] \hfill \\\\
-\end{description}
+\begin{itemize}
+  \item Basic UI controls  
+  \item Binding and model-wide binding
+  \item Graceful degradation of unsupported elements
+  \item Support for interpolated model updates (animations)
+  \item Support for absolute and grid layouts and scrollable containers
+  \item Support for styling (background color, font size and font color)
+\end{itemize}
 
-The features we implemented completely cover the functional requirements we have set in the Design chapter.
+The features we implemented completely cover the functional requirements we have set in the Design chapter, with the exception of UI generator API support.
 
 The non-functional requirements were also met. The UI loading times are below 0.5 s in all interfaces of the testing application. The execution profiling has shown increased CPU usage in some situations, but when idle, the consumption of phone's resources is normal.
 
+\section{Accessibility}
+On Windows Phone 8, the app accessibility could be improved by not redrawing the whole UI when one interface is embedded into other. Also, support for voice commands could be added to UIProtocol. Windows Phone 8.1 brings new accessibility features and ways to provide content to users with special needs - particularly interesting is the Narrator screen reader or the option to increase font size in all apps.
+UIProtocol can easily facilitate additional information that might be needed by these features, such as alternative text for images.
+
+WP8.1 was released at a late stage of this work and therefore could not be incorporated in it much. We tried to run the developed app on a WP8.1 emulator and explore the new features but the Hyper-V feature required to run the emulator was not supported by our OS version. We therefore could not directly evaluate the new platform. This is a subject of future work, as discussed in the next section.
+
+
+%wp 8.1
+%UIP to implement voice commands\\
+%jak jsme se popasovali s accessibility guidelines\\
+%Je potreba rict, ze prvni preview bylo k dispocici az ke konci psani teto prace, tisim duben (citovat zdroj).
+%Spravne se zachovame, ze dodrzime dopopruceni pro pristupnost a pak by to melo fungovat. V Future Work bude dalsi vylepseni za ucelem zlepseni pristupnosti na zaklade testu aplikace na WP8.1. Pokud to chcete udelat uplne spravne, tak to otestujte v emulatoru a do kapitoly testovani dejte vysledky.
+
 \section{Future Work}
-Implementing the full feature set of an UIProtocol client was not possible in the scope of this work. Therefore there is a number of features by which the client could be extended. In particular the extensions may include:
+Implementing the full feature set of an UIProtocol client was not possible in the scope of this work. Therefore there is a number of features by which the client could be extended. In particular the extensions may include:\\
 
 \begin{description}
   \item[StackPanel layout panel] \hfill \\
   The StackPanel is a simple layout panel that arranges its child elements into a single line that can be oriented horizontally or vertically. Currently, the app supports Grid and Canvas panels to which UI controls can be added. StackPanel should be implemented to widen the choice of layout panels. 
   \item[More UI controls] \hfill \\
-  The client comes with a small set of implemented UI controls. New UI controls can be implemented, such as an audio element.
+  The client comes with a small set of implemented UI controls. New UI controls can be implemented.
   \item[Wider support for styling] \hfill \\
-  The app could implement more font styles, such as font family, font type (e.g. italic, bold).
+  The app could support more font styles, such as font family, font decoration (e.g. italic, bold). These features can be easily added.
   \item[Performance optimization] \hfill \\
   The performance of the current client is satisfactory, it could, however be improved by techniques such as interface pre-fetching.
   \item[Error handling] \hfill \\
-  The client ignores errors received from the server, for example if a requested interface is not found at the server.
+  The client ignores errors received from the server, for example if a requested interface is not found at the server. It also assumes all data it receives is correct.
   \item[Support for different screen orientations] \hfill \\
-When a user rotates the phone, the UI remains the same. this is not so important for the nuip project but an UIProtocol client should have this feature implemenred
-refreshing only parts of UI that need to be refreshed.
+When a user rotates the phone, the UI remains the same. This is not so important for the NUIP project but an UIProtocol client should have this feature implemented.
+\item[Support for UI generator API] \hfill 
 \item[Screen reader friendliness] \hfill \\
-Currently, the implementation redraws the whole UI. This approach was chosen for its simplicity. This approach, however, is not discouraged by the accessibility guidelines for WP8. todo toto bych mozna stihl predelat.
+Currently, the implementation redraws the whole UI when interface is embedded into another one. This approach was chosen for its simplicity. It is, however, discouraged by the accessibility guidelines for WP.
+\item[Additional accessibility features based on WP8.1] \hfill \\
+An accessibility analysis of WP8.1 should follow, assessing the changes that should be made to UIProtocol and the client to take the full advantage of WP8.1.
 \end{description}
-
-
-

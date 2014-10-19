@@ -1,0 +1,24 @@
+public void Render(IRenderable item, object parent)
+{
+  ...
+  foreach (var element in item.Elements)
+  {
+      if (element is IRenderableContainer)
+      {
+          Render(element, pass);
+          return;
+      }
+      UipBase uib = null;
+      switch (GracefullyDegrade(element.Class))
+      {
+          case Consts.UIelements.TextBox:
+              uib = new UipTextBox(element);
+              break;
+          ...
+          case Consts.UIelements.InputTime:
+              uib = new UipTimePicker(element);
+              break;
+      }
+      if (uib != null) uib.Render(pass);
+  }
+}

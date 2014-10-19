@@ -4,7 +4,7 @@
 %%
 %% 2012-12-17 v0.1 first version derived from cmpthesis.tex
 
-\documentclass[bcl,draft]{felthesis} % or [...,czech] for thesis in Czech
+\documentclass[bcl]{felthesis} % or [...,czech] for thesis in Czech
 %%\documentclass[msc,draft]{felthesis} % or [...,czech] for thesis in Czech
 %%\documentclass[phd,draft]{felthesis} % or [...,czech] for thesis in Czech
 
@@ -16,10 +16,12 @@
 \usepackage{graphicx}
 \usepackage{color, colortbl}
 \usepackage{courier}
+\usepackage{dirtree}
 
 %tabularx for table width equal to textwidth
 \usepackage{tabularx}
 \usepackage{tabu}
+
 
 %% for code listings
 \usepackage[final]{listings}
@@ -63,13 +65,13 @@
          %HTML
          Java
  }
-    %\DeclareCaptionFont{blue}{\color{blue}} 
+%    \DeclareCaptionFont{blue}{\color{blue}} 
 
   %\captionsetup[lstlisting]{singlelinecheck=false, labelfont={blue}, textfont={blue}}
   \usepackage{caption}
 \DeclareCaptionFont{white}{\color{white}}
 \DeclareCaptionFormat{listing}{\colorbox[cmyk]{0.43, 0.35, 0.35,0.01}{\parbox{\textwidth}{\hspace{15pt}#1#2#3}}}
-\captionsetup[lstlisting]{format=listing,labelfont=white,textfont=white, singlelinecheck=false, margin=0pt, font={bf,footnotesize}}
+\captionsetup[lstlisting]{format=listing, singlelinecheck=false, margin=0pt, font={bf,footnotesize}}
 %% end of for code listings
 
 %% --- useful draft packages
@@ -115,7 +117,7 @@
 \startBodyMatter
   \input{introduction}
   \input{overallAnalysis}
-  \input{uipAnalisys}
+  \input{uipAnalysis}
   \input{w8Acessibility}
   \input{navigationSystems}
   \input{accessibilityGuidelines}
@@ -126,6 +128,8 @@
   
   \startAppendices
     \include{speechCommandTables}
+    \include{userManual}
+    %\include{cdContents}
   \stopAppendices
 \stopBodyMatter
 

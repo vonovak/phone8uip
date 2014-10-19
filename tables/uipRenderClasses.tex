@@ -1,13 +1,13 @@
 \begin{table}[htbp]
   \centering
-  \caption{Classes Ensuring the Rendering of UI Elements}
+  \caption{Classes ensuring the rendering of UI elements}
   \label{tab:uipRenderClasses}
  \renewcommand{\arraystretch}{1.2}
-    \begin{tabularx}{\textwidth}{p{2.5cm}|X}
+    \begin{tabularx}{\textwidth}{p{3cm}|X}
     \rowcolor{mygray}
-    \textbf{Class Name} & \textbf{Class Description} \\
-       Renderer & The main class responsible for rendering the elements stored in the classes of Table \ref{tab:uipDocClasses}. Its rendering method walks through the tree structure of UIP Document and invokes rendering of each element. It also does the graceful degradation of unsupported elements. \\ \hline
-       IRenderable & An interface which defines methods for acquiring class, style, position and other properties of UIP elements. It is implemented by all classes in Table \ref{tab:uipDocClasses}. \\ \hline
-       \hspace{0pt}IRenderableContainer & Extension of IRenderable interface. It also provides support for layouts and is implemented by instances of Interface and Container. \\
+    \textbf{Class name} & \textbf{Class description} \\
+       Renderer & The main class responsible for rendering the elements stored in the classes of table \ref{tab:uipDocClasses}. Its rendering method walks through the tree structure of UIP Document and invokes rendering of each element. It also does the graceful degradation of unsupported elements. \\ \hline
+       IRenderable & An interface which defines methods for acquiring class, style, position and other properties of UIP elements. It is implemented by all classes in table \ref{tab:uipDocClasses}. \\ \hline
+       \hspace{0pt}IRenderableContainer & Extension of \texttt{IRenderable} interface. It provides support for layouts and is implemented by instances of Interface and Container. \\
     \end{tabularx}%
 \end{table}%

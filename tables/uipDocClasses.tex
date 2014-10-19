@@ -1,14 +1,14 @@
 \begin{table}[htbp]
   \centering
-  \caption{UIP Document Representation Classes}
+  \caption{UIP Document representation classes}
   \label{tab:uipDocClasses}
  \renewcommand{\arraystretch}{1.2}
-    \begin{tabularx}{\textwidth}{p{2.5cm}|X}
+    \begin{tabularx}{\textwidth}{p{3cm}|X}
     \rowcolor{mygray}
-    \textbf{Class Name} & \textbf{Class Description} \\
-       Interface & This class represents the UIP interface as a container for more UI elements. This class has its own position, a container and can be embedded into another interface, as specified in Listing \ref{uipInterface}. \\ \hline
-       Container & This is the class that stores the information about the particular UI elements. A Container can contain other Containers and instances of Element class.\\ \hline
-       Element & Class representing particular UI elements such as button, textfield and more. \\
+    \textbf{Class name} & \textbf{Class description} \\
+      Interface & This class represents the UIP interface as a container for more UI elements. This class has its own position, a \texttt{Container} instance and can be embedded into another interface, as specified in listing \ref{uipInterface}. \\ \hline
+       Container & This class stores the information about particular UI elements. A \texttt{Container} can contain instances of other \texttt{Container}s and instances of \texttt{Element} class.\\ \hline
+       Element & Class representing particular UI elements such as button, textbox and more. \\
     \end{tabularx}%
     \label{tab:uipDocClasses2}
 \end{table}%

@@ -1,33 +1,36 @@
-\section{Accessibility Guidelines for Windows Phone 8}
+\section{Windows Phone Accessibility Guidelines}
 \label{sec:accGuidelines}
-Microsoft specifies a set of rules that ought to be followed by a developer in order to create an application which is friendly toward users with disabilities, which is called Guidelines for designing accessible apps and is accessible online at \cite{wp8guide}. If a developer follows the principles of accessible design, the application will be accessible to the widest possible audience.
+Microsoft specifies a set of rules that ought to be followed by a developer in order to create an application which is friendly toward users with special needs, which is called Guidelines for designing accessible apps and is accessible online \cite{wp8guide}. If a developer follows the principles of accessible design, the application will be accessible to the widest possible audience.
 
 \subsubsection{Reasons for Developing Accessible Applications}
-Users of an application may have different kinds of disabilities. By keeping in mind the rules of accessible development, a developer can substantially improve the user experience. Also, let us not forget it one of the goals of this work to develop an accessible UIProtocol client.
-\\In the rest of the section, we will cover several accessibility scenarios.
+Users of an application may have different kinds of needs. By keeping in mind the rules of accessible development, a developer can improve the user experience. Also, it is one of the goals of this work to develop an accessible UIProtocol client.
+\\In the rest of the section, we will cover several accessibility scenarios:
 
 \subsubsection{Screen Reading}
-Users who have some visual impairment or are blind use screen readers to help them create a mental model of the presented UI. Information conveyed by the screen readers includes details about the UI elements and a visually impaired users depends heavily on it. Therefore it is important to present it sufficiently and correctly.
-The provided UI element information describes its name, role, description, state and value \cite{wp8guide}.
+Users who have some visual impairment or are blind use screen readers to help them create a mental model of the presented UI. Information conveyed by the screen readers includes details about the UI elements and visually impaired users depend heavily on it. Therefore it is important to present it sufficiently and correctly.
+A correctly provided UI element information describes its name, role, description, state and value \cite{wp8guide}.
 
-\subsubsection{Name}
-Name is a short descriptive string that the screen reader uses to announce an UI element to the user \cite{wp8guide}. It should be something that shortly describes what the UI element represents. For different elements this information is provided differently. The Table \ref{tab:accessibleNameWP8} gives more details on how to set or get a name for different XAML UI elements.
+\paragraph{Name}
+Name is a short descriptive string that the screen reader uses to announce an UI element to the user \cite{wp8guide}. It should be something that shortly describes what the UI element represents. For different elements this information is provided differently. The Table \ref{tab:accessibleNameWP8} gives more details on accessible names for different XAML UI elements.
 
 
 \input{tables/accessibleNameWP8}
+
 The container elements, such as Panels or Grids do not provide their accessible name because it would, in most cases be meaningless \cite{wp8guide}. Therefore containers are not covered in the table.
 It is the container elements that carry the accessible name and other information, not the container itself.
 
-\subsubsection{Role and Value}
-Role is the ‘type’ of the UI elements, e.g. Button, Image, Calendar, Menu, etc \cite{wp8UIelementsAcc}. Every UI element therefore has a role. Value, on the other hand, is only present at the UI elements that display some content to user – e.g. TextBox. The UI elements and controls that are the standard part of the Windows Runtime XAML set already implement support for role and value reporting \cite{wp8UIelementsAcc}. Assistive technologies can obtain these values through methods exposed by the control's AutomationPeer definitions.
+\paragraph{Role and Value}
+Role is the ‘type’ of the UI elements, e.g. Button, Image, Calendar, Menu, etc \cite{wp8UIelementsAcc}. Every UI element therefore has a role. Value, on the other hand, is only present at the UI elements that display some content to user – e.g. TextBox. The UI elements and controls that are the standard part of the Windows Runtime XAML set already implement support for role and value reporting \cite{wp8UIelementsAcc}.
 
-
-\subsubsection{Keyboard Accessibility}
-For screen reader users, a hardware keyboard is an important part of application control as they use it to browse through the controls to gain understanding of the app and interact with it. An accessible app must let users access all interactive UI elements by keyboard \cite{wp8guide}. This enables the users to navigate through the app by Tab and arrow keys, trigger an action (e.g. a button click) by space or Enter keys and use keyboard shortcuts \cite{wp8guide}.
+\paragraph{Keyboard Accessibility}
+For screen reader users, a hardware keyboard is an important part of application control as they use it to browse through the controls to gain understanding of the app and interact with it. An accessible app must let users access all interactive UI elements by keyboard \cite{wp8guide}. This enables the users to navigate through the app by tab and arrow keys, trigger an action (e.g. a button click) by space or enter keys and use keyboard shortcuts \cite{wp8guide}.
 
 \subsubsection{Visual experience accessibility}
-Some lightly visually impaired people (elderly, for example) prefer to consume the apps content with increased font size and/or contrast ration \cite{wp8guide}. An accessible app UI therefore has to scale and change according to the settings in Ease of Access control panel. If color is used to express some information, developer has to keep in mind there might be color-blind users who need an alternative like text, or icons \cite{wp8guide}.
+Some lightly visually impaired people (elderly, for example) prefer to consume the apps content with increased font size and/or contrast ration \cite{wp8guide}. Since WP8.1, an accessible app UI can scale and change its font size according to the settings in Ease of Access control panel. If color is used to express some information, developer has to keep in mind there might be color-blind users who need an alternative like text, or icons \cite{wp8guide}.
 
 \subsubsection{Additional Guidelines}
-There is a number of other guidelines for developing accessible applications. For example, it is recommended to not automatically refresh an entire app canvas unless it is really necessary for app functionality. This is because the screen reader assumes that a refreshed canvas contains an entirely new UI – even if the update considered only a small part of the UI – and must recreate and present the description to the user again \cite{wp8guide}.
-Since Windows Phone 8.1 there is IsTextScaleFactorEnabled property available for every text element which, if set to true, will override the app's font-size setting and set the font size to whatever value it was set by user in the Ease of Access control panel \cite{wp8guide}.
+There is a number of other guidelines for developing accessible applications. For example, it is recommended to not automatically refresh an entire app canvas unless it is really necessary for app functionality. This is because the screen reader assumes that a refreshed canvas contains an entirely new UI – even if the update considered only a small part of it – and must recreate and present the description to the user again \cite{wp8guide}.
+
+Since Windows Phone 8.1 there is \texttt{IsTextScaleFactorEnabled} property available for every text element which, if set to true, will override the app's font-size setting and set the font size to whatever value it was set by user in the Ease of Access control panel \cite{wp8guide}.
+
+
